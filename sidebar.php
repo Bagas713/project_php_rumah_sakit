@@ -30,12 +30,6 @@
           </li>
 
           <li>
-            <a href="http://localhost/project_php_rumah_sakit/index.php?page=history-personal-entry" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-              <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">History Personal Entry</span>
-            </a>
-          </li>
-
-          <li>
             <a href="http://localhost/project_php_rumah_sakit/index.php?page=petunjuk-pengisian" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
               <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">Petunjuk Pengisian</span>
             </a>
