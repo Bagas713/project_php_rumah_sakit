@@ -24,16 +24,14 @@
       <p>Rumah Sakit</p>
     </div>
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown button
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+      <button class="dropbtn">Nama Dokter</button>
+      <div class="dropdown-content">
+        <a href="http://localhost/project_php_rumah_sakit/index.php?page=profile-dokter">Nama Dokter</a>
+        <a href="http://localhost/project_php_rumah_sakit/index.php?page=logout">Logout</a>
       </div>
     </div>
   </header>
+  
   <div class="container">
     <?php
       include_once("sidebar.php");
