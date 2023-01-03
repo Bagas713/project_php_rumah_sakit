@@ -30,7 +30,7 @@
           </li>
 
           <li>
-            <a href="http://localhost/project_php_rumah_sakit/index.php?page=petunjuk-pengisian" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+            <a href="http://localhost/project_php_rumah_sakit/index.php?page=petunjuk-pengisian/petunjuk-pengisian" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
               <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">Petunjuk Pengisian</span>
             </a>
           </li>

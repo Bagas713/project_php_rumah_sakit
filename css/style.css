@@ -208,8 +208,111 @@ footer {
 
 /* petunjuk pengisian start */
 
-.container-content .title-content .hint-box .isi {
+.guide ol li {
   margin-left: 20px;
+  font-size: 18px;
+  /* text-decoration: none; */
+  margin-bottom: 4px;
+}
+
+.guide ol li a {
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.container-guide {
+  /* margin-top: 50px; */
+  border-top: 1px solid black;
+}
+
+.container-guide .hint-box .title-box p {
+  font-weight: bold;
+}
+
+.container-guide .hint-box .isi p {
+  margin-left: 20px;
+  font-style: italic;
 }
 
 /* petunjuk pengisian end */
+
+/* summary data start */
+
+.container-sum {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* column-gap: 100px; */
+}
+
+.container-sum>* {
+  /* flex: 2 2; */
+}
+
+.row-text-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
+
+}
+
+.row .col .title-row {
+  /* text-align: center; */
+  /* margin: auto; */
+  /* width: 100%;? */
+  margin-bottom: 50px;
+}
+
+.counter {
+  background-color:#f5f5f5;
+  padding: 20px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.count-title {
+  font-size: 40px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.count-text {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.fa-2x {
+  margin: auto;
+  color: #4ad1e5;
+}
+
+.col .counter p {
+  font-size: 18px;
+}
+
+/* summary data end */
+
+/* login & register start */
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+/* login & register end */
