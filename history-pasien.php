@@ -38,7 +38,7 @@
       <td>-</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
+      <td><a href="http://localhost/project_php_rumah_sakit/index.php?page=action/profile-pasien"><i class="fa-regular fa-rectangle-list"></i></a></td>
     </tr>
     <tr>
       <th scope="row">2</th>
