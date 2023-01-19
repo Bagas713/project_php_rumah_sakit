@@ -1,8 +1,15 @@
 <?php
-
   include_once("function/helper.php");
+  include_once("function/koneksi.php");
+
+  session_start(); 
 
   $page = isset($_GET['page']) ? $_GET['page'] : false;
+
+  $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : false;
+  $level = isset($_SESSION['level']) ? $_SESSION['level'] : false;
+  $password = isset($_SESSION['password']) ? $_SESSION['password'] : false;
+  $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'username tidak di temukan';
 
 ?>
 
@@ -28,18 +35,43 @@
     <div class="theader">
       <p>Rumah Sakit</p>
     </div>
-    <div class="dropdown">
-      <button class="dropbtn">Nama Dokter</button>
-      <div class="dropdown-content">
-        <a href="http://localhost/project_php_rumah_sakit/index.php?page=profile-dokter">Nama Dokter</a>
-        <a href="http://localhost/project_php_rumah_sakit/index.php?page=logout">Logout</a>
-      </div>
-    </div>
+    <?php
+      $count = 0;
+      $firstName;
+      $lastName;
+      $phone;
+      $title;
+      $short;
+      $name = mysqli_query($conn, "SELECT * FROM account WHERE id_user = '". $id_user."'"); 
+      while($nameck = mysqli_fetch_array($name)){
+        if($nameck['id_user'] == $id_user) {
+          $firstName = $nameck['first_name'];
+          $lastName = $nameck['last_name'];
+          $phone = $nameck['phone'];
+          $title = $nameck['title'];
+          $short = $nameck['short'];
+        }
+      }
+      if($id_user) {
+        echo "
+        <div class='dropdown'>
+          <button class='dropbtn'>$firstName $lastName</button>
+          <div class='dropdown-content'>
+            <a href='http://localhost/project_php_rumah_sakit/index.php?page=profile-dokter'>$firstName $lastName</a>
+            <a href='http://localhost/project_php_rumah_sakit/index.php?page=user-access/logout'>Logout</a>
+          </div>
+        </div>
+        ";
+      }
+    ?>
   </header>
   
   <div class="container">
+
     <?php
-      include_once("sidebar.php");
+      if($id_user) {
+        include_once("sidebar.php");
+      }
     ?>
 
     <div id="content">

@@ -1,3 +1,13 @@
+<?php
+
+  if($id_user){
+      
+  } else {
+    header("location:index.php?page=user-access/login");
+  }
+
+?>
+
 <div class="container-content">
   <div class="ti">
     <h2>Data Pasien</h2>

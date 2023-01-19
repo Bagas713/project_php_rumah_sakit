@@ -1,3 +1,13 @@
+<?php
+
+  if($id_user){
+      
+  } else {
+    header("location:index.php?page=user-access/login");
+  }
+
+?>
+
 <div class="container-content">
   <div class="title">
     <h2>Petunjuk Pengisian</h2>

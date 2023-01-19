@@ -1,6 +1,10 @@
 <?php
 
-  include_once("index.php")
+  if($id_user){
+      
+  } else {
+    header("location:index.php?page=user-access/login");
+  }
 
 ?>
 

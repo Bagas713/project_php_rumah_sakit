@@ -1,3 +1,13 @@
+<?php
+
+  if($id_user){
+    
+  } else {
+    header("location:index.php?page=user-access/login");
+  }
+
+?>
+
 <div class="container-content">
 
   <div class="title">
@@ -6,7 +16,6 @@
 
   <div class="action-home row" style="margin-left: 1px">
     <button type="button" class="btn btn-info btn-lg column spc" onclick="openTab('b1');">
-      <!-- <a href="#" >Add</a> -->
       Add
     </button>
     
@@ -15,10 +24,8 @@
     </a>    
   </div>
 
-  <!-- Full-width columns: (hidden by default) -->
-
-  
   <div id="b1" class="containerTab" style="display:none;background:white">
+
     <div class="action-home row" style="margin-left: 1px; margin-bottom: 20px; display: grid; row-gap: 10px; grid-template-columns: auto auto auto auto; ">
       <button type="button" class="btn btn-light">Esofagus</button>
       <button type="button" class="btn btn-light">Gaster</button>
@@ -33,42 +40,62 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Identitas Pasien</h2>
 
-    <form>
+    <form action="<?php echo BASE_URL."user-access/add-pasien.php"; ?>" method="POST">
+      <?php
+        $notif = isset($_GET['notif']) ? $_GET['notif'] : false;
+        $no_rm = isset($_GET['no_rm']) ? $_GET['no_rm'] : false;
+        $namaLengkap = isset($_GET['nama_lengkap']) ? $_GET['nama_lengkap'] : false;
+        $no_ktp = isset($_GET['no_ktp']) ? $_GET['no_ktp'] : false;
+        $date_born = isset($_GET['date_born']) ? $_GET['date_born'] : false;
+        $umur = isset($_GET['umur']) ? $_GET['umur'] : false;
+        $pendidikan = isset($_GET['pendidikan']) ? $_GET['pendidikan'] : false;
+        $job = isset($_GET['job']) ? $_GET['job'] : false;
+        $alamat = isset($_GET['alamat']) ? $_GET['alamat'] : false;
+        $alamat_rs = isset($_GET['alamat_rs']) ? $_GET['alamat_rs'] : false;
+        $phone = isset($_GET['phone']) ? $_GET['phone'] : false;
+        $fam_phone = isset($_GET['fam_phone']) ? $_GET['fam__phone'] : false;
+        $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : false;
+
+        if($notif == "require") {
+            echo "<div class='notif'>Maaf, kamu harus melengkapi form dibawah ini</div>";
+        }
+      ?>
+
       </br>
       <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">No. RM</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputEmail3" placeholder="No. RM">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="No. RM" name="no_rm">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Lengkap</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lengkap">
+          <input type="text" class="form-control" id="inputEmail3" placeholder="Nama Lengkap" name="nama_lengkap">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Identitas Pasien (KTP)</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Identitas Pasien (KTP)">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Identitas Pasien (KTP)" name="no_ktp">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Lahir</label>
         <div class="col-sm-10">
-          <input type="date" class="form-control" id="inputPassword3" >
+          <input type="date" class="form-control" id="inputPassword3" name="date_born">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Umur</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Umur">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Umur" name="umur">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Pendidikan</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control">
+          <select id="inputState" class="form-control" multiple name="pendidikan[]">
             <option>SD</option>
             <option>SMP/SMA</option>
             <option>S1/S2</option>
@@ -78,7 +105,7 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Pekerjaan</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control">
+          <select id="inputState" class="form-control" name="job">
             <option>Buruh</option>
             <option>Petani</option>
             <option>Wiraswasta</option>
@@ -91,30 +118,30 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Alamat Sesuai KTP</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Alamat Sesuai KTP">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Alamat Sesuai KTP" name="alamat">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Rumah Sakit Tempat Pelayanan</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Rumah Sakit Tempat Pelayanan">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Rumah Sakit Tempat Pelayanan" name="alamat_rs">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">No Telp Pasien</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="No Telp Pasien">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No Telp Pasien" name="phone">
         </div>
       </div><div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">No Telp Keluarga Dekat</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="No Telp Keluarga Dekat">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No Telp Keluarga Dekat" name="fam_phone">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Kasus</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control">
+          <select id="inputState" class="form-control" name="type_ill">
             <option>Esofagus</option>
             <option>Gaster</option>
             <option>Duodenum-Jejunum-Ileum</option>
