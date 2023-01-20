@@ -1,9 +1,20 @@
 <?php
 
-  include_once("data-pasien.php");
+  include "../data-pasien.php";
+  //include_once("index.php");
+
+  include "../function/koneksi.php";
+    if (isset($_GET['id_pasien'])) {
+        $id_pasien = $_GET['id_pasien'];
+    }
+    else {
+        die ("Error. No ID Selected! ");    
+    }
 
 ?>
-
+<head>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <div class="container-content">
 
   <div class="title">

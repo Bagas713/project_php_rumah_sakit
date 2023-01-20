@@ -40,21 +40,21 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Identitas Pasien</h2>
 
-    <form action="<?php echo BASE_URL."user-access/add-pasien.php"; ?>" method="POST">
+    <form action="<?php echo BASE_URL."set-upload-dataPasien.php"; ?>" method="POST">
       <?php
-        $notif = isset($_GET['notif']) ? $_GET['notif'] : false;
-        $no_rm = isset($_GET['no_rm']) ? $_GET['no_rm'] : false;
-        $namaLengkap = isset($_GET['nama_lengkap']) ? $_GET['nama_lengkap'] : false;
-        $no_ktp = isset($_GET['no_ktp']) ? $_GET['no_ktp'] : false;
-        $date_born = isset($_GET['date_born']) ? $_GET['date_born'] : false;
-        $umur = isset($_GET['umur']) ? $_GET['umur'] : false;
-        $pendidikan = isset($_GET['pendidikan']) ? $_GET['pendidikan'] : false;
-        $job = isset($_GET['job']) ? $_GET['job'] : false;
-        $alamat = isset($_GET['alamat']) ? $_GET['alamat'] : false;
-        $alamat_rs = isset($_GET['alamat_rs']) ? $_GET['alamat_rs'] : false;
-        $phone = isset($_GET['phone']) ? $_GET['phone'] : false;
-        $fam_phone = isset($_GET['fam_phone']) ? $_GET['fam__phone'] : false;
-        $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : false;
+        $notif = isset($_POST['notif']) ? $_POST['notif'] : false;
+        $no_rm = isset($_POST['no_rm']) ? $_POST['no_rm'] : false;
+        $namaLengkap = isset($_POST['nama_lengkap']) ? $_POST['nama_lengkap'] : false;
+        $no_ktp = isset($_POST['no_ktp']) ? $_POST['no_ktp'] : false;
+        $date_born = isset($_POST['date_born']) ? $_POST['date_born'] : false;
+        $umur = isset($_POST['umur']) ? $_POST['umur'] : false;
+        $pendidikan = isset($_POST['pendidikan']) ? $_POST['pendidikan'] : false;
+        $job = isset($_POST['job']) ? $_POST['job'] : false;
+        $alamat = isset($_POST['alamat']) ? $_POST['alamat'] : false;
+        $alamat_rs = isset($_POST['alamat_rs']) ? $_POST['alamat_rs'] : false;
+        $phone = isset($_POST['phone']) ? $_POST['phone'] : false;
+        $fam_phone = isset($_POST['fam_phone']) ? $_POST['fam_phone'] : false;
+        $type_ill = isset($_POST['type_ill']) ? $_POST['type_ill'] : false;
 
         if($notif == "require") {
             echo "<div class='notif'>Maaf, kamu harus melengkapi form dibawah ini</div>";
@@ -95,7 +95,7 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Pendidikan</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" multiple name="pendidikan[]">
+          <select id="inputState" class="form-control" name="pendidikan">
             <option>SD</option>
             <option>SMP/SMA</option>
             <option>S1/S2</option>
