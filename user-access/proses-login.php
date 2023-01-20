@@ -9,7 +9,7 @@
 	$query = mysqli_query($conn, "SELECT * FROM account WHERE username='$username' AND password='$password'");
 	
 	if(mysqli_num_rows($query) == 0){
-		header("location:". BASE_URL . "index.php?page=login&notif=true");
+		header("location:". BASE_URL . "index.php?page=user-access/login&notif=true");
 	}else{
 	
 		$row = mysqli_fetch_assoc($query);

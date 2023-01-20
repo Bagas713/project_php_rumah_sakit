@@ -14,13 +14,13 @@
             $notif = isset($_GET['notif']) ? $_GET['notif'] : false;
 
             if($notif == true){
-                echo "<div class='notif'>Maaf, email atau password yang kamu masukan tidak cocok</div>";
+                echo "<div style='background-color: #FFB100; height: 9vh; padding:10px; border-radius:10px;'>Maaf, username atau password yang kamu masukan tidak cocok</div>";
             }
           ?>
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example3">Username</label>
+            <label class="form-label" style="margin-top: 10px;" for="form3Example3">Username</label>
             <input type="text" id="form3Example3" class="form-control form-control-lg"
               placeholder="Enter Username" name="username"/>
           </div>
