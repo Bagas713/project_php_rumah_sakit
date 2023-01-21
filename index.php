@@ -8,7 +8,6 @@
 
   $id_user = isset($_SESSION['id_user']) ? $_SESSION['id_user'] : false;
   $level = isset($_SESSION['level']) ? $_SESSION['level'] : false;
-  $password = isset($_SESSION['password']) ? $_SESSION['password'] : false;
   $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'username tidak di temukan';
 
   if($id_user) {
@@ -16,7 +15,7 @@
     $action = isset($_GET['action']) ? $_GET['action'] : false;
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
   } else {
-    header("location: ".BASE_URL."index.php?page=login");
+    // header("location: ".BASE_URL."index.php?page=login");
   }
 
 ?>
@@ -66,7 +65,7 @@
           <button class='dropbtn'>$firstName $lastName</button>
           <div class='dropdown-content'>
             <a href='".BASE_URL."index.php?page=module/dokter/profile-dokter&module=dokter&action=profile-dokter'>$firstName $lastName</a>
-            <a href='http://localhost/project_php_rumah_sakit/index.php?page=user-access/logout'>Logout</a>
+            <a href='logout.php'>Logout</a>
           </div>
         </div>
         ";
@@ -85,7 +84,11 @@
     <div id="content">
       <?php
         $filename = "$page.php";
-        $file = "module/$module/$action.php";
+        
+        if($id_user) {
+          $file = "module/$module/$action.php";
+        }
+
         
         if(file_exists($filename)) {
           include_once($filename);
