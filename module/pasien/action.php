@@ -38,4 +38,4 @@
                                                 type_ill='$type_ill' WHERE id_pasien='$id_pasien'");
   }
 
-  header("location:".BASE_URL."index.php?page=profile-pasien&module=pasien&action=history-pasien");
+  header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien");
