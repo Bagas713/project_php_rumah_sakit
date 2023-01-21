@@ -30,6 +30,7 @@
     $data = mysqli_query($conn, "SELECT * FROM data_pasien"); 
     $no = 1;
     while($dta = mysqli_fetch_array($data)){
+      // $id_pasien = $dta['id_pasien'];
       ?>
       <tr>
       <th scope="row"><?php  echo $no++; ?></th>
