@@ -40,7 +40,7 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Identitas Pasien</h2>
 
-    <form action="<?php echo BASE_URL."set-upload-dataPasien.php"; ?>" method="POST">
+    <form action="<?php echo BASE_URL."/module/pasien/set-upload-dataPasien.php"; ?>" method="POST">
       <?php
         $notif = isset($_POST['notif']) ? $_POST['notif'] : false;
         $no_rm = isset($_POST['no_rm']) ? $_POST['no_rm'] : false;

@@ -16,7 +16,7 @@
 
   $password = md5($password);
 
-  if($button == "add") {
+  if($button == "Save") {
     mysqli_query($conn, "INSERT INTO  account (email, username, password, first_name, last_name, phone, title, short)
                                   VALUES ('$email', '$username', '$password', '$firstName', '$lastName', '$phone', '$title', '$short')");
   }else if($button == "Update") {

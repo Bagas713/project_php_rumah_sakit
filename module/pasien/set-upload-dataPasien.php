@@ -1,7 +1,7 @@
 <?php
 
-    include_once("function/koneksi.php");
-    include_once("function/helper.php");
+    include_once("../../function/koneksi.php");
+    include_once("../../function/helper.php");
 
     $no_rm = isset($_POST['no_rm']) ? $_POST['no_rm'] : false;
     $namaLengkap = isset($_POST['nama_lengkap']) ? $_POST['nama_lengkap'] : false;

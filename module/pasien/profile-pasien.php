@@ -1,6 +1,6 @@
 <?php
-
-  include_once("../index.php");
+  $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
+  // include_once("../index.php");
   // include_once("../data-pasien.php");
 
   
@@ -22,7 +22,7 @@
   </div>
 
   <div class="action-home row" style="margin-left: 1px">
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=action/identitas-pasien" >
+    <a href="<?php echo BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien"; ?>" >
       <button type="button"  class="btn btn-info btn-lg column spc btn-menu"  style="background-color: #0081C9;">
         Identitas Pasien
       </button>

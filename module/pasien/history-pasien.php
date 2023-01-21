@@ -30,7 +30,7 @@
     $data = mysqli_query($conn, "SELECT * FROM data_pasien"); 
     $no = 1;
     while($dta = mysqli_fetch_array($data)){
-      // $id_pasien = $dta['id_pasien'];
+      $id_pasien = $dta['id_pasien'];
       ?>
       <tr>
       <th scope="row"><?php  echo $no++; ?></th>
@@ -45,7 +45,7 @@
       <td><?php echo $dta['job']; ?></td>
       <td><?php echo $dta['phone']; ?></td>
       <td><?php echo $dta['type_ill']; ?></td>
-      <td><a href="http://localhost/project_php_rumah_sakit/action/profile-pasien.php?id_pasien=<?php echo $dta['id_pasien']; ?>", ><i class="fa-regular fa-rectangle-list"></i></a></td>
+      <td><a href="<?php echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien"; ?>", ><i class="fa-regular fa-rectangle-list"></i></a></td>
     </tr>
     <?php  
     }
