@@ -61,13 +61,13 @@
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password (If Changing Password)</label>
     <div class="col-sm-9">
-      <input type="password"  class="form-control" id="inputPassword3" placeholder="New Password" name="new_password">
+      <input type="password"  class="form-control" id="inputPassword3" placeholder="New Password" name="password">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
     <div class="col-sm-9">
-      <input type="password"  class="form-control" id="inputPassword3" placeholder="Confirm New Password" name="conf_password">
+      <input type="password"  class="form-control" id="inputPassword3" placeholder="Confirm New Password" name="password">
     </div>
   </div>
 
