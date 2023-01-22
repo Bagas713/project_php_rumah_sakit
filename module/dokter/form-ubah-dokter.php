@@ -1,6 +1,10 @@
 <?php
   // include_once("function/koneksi.php");
 
+  if(!$id_user){
+    header("location:index.php?page=user-access/login");
+  }
+
   $id_user = isset($_GET['id_user']) ? $_GET['id_user'] : 'id not found';
 
   $firstName = "";

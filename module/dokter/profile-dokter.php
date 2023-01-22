@@ -1,3 +1,8 @@
+<?php
+  if(!$id_user){
+    header("location:index.php?page=user-access/login");
+  }
+?>
 <div class="container-content" style="background-color:white; margin-left:60px;">
   <section>
   

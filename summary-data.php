@@ -1,3 +1,8 @@
+<?php
+  if(!$id_user){
+    header("location:index.php?page=user-access/login");
+  }
+?>
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
 <div class="container-content">

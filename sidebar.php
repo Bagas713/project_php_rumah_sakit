@@ -1,3 +1,8 @@
+<?php
+  if(!$id_user){
+    header("location:index.php?page=user-access/login");
+  }
+?>
 <div class="container-fluid-sidebar" style="">
   <div class="sidebar" style="float:left; display: inline-block;
 	vertical-align: top;

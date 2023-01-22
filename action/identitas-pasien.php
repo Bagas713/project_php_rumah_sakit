@@ -1,5 +1,8 @@
 <?php
 
+  if(!$id_user){
+    header("location:index.php?page=user-access/login");
+  }
   include_once("module/pasien/profile-pasien.php");
   // include_once("../function/helper.php");
   // include_once("../function/koneksi.php");

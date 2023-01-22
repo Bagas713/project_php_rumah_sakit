@@ -1,6 +1,6 @@
 <?php
   if($id_user) {
-    header("location: ".BASE_URL);
+    direct(BASE_URL);
   }
   // include_once("index.php");
 

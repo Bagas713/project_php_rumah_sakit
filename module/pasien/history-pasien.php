@@ -1,9 +1,7 @@
 <table class="table table-hover">
 <?php
   
-  if($id_user){
-      
-  } else {
+  if(!$id_user){
     header("location:index.php?page=user-access/login");
   }
 ?>
