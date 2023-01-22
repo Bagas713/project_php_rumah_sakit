@@ -23,8 +23,8 @@
 		
 		if(isset($_SESSION["status_login"])){
 			unset($_SESSION["status_login"]);
-			header("location: ".BASE_URL."index.php?page=home");
+			header("location: ".BASE_URL."index.php?page=module/pasien/home");
 		}else{
-			header("location: ".BASE_URL."index.php?page=home");
+			header("location: ".BASE_URL."index.php?page=module/pasien/home");
 		}
 	}

@@ -1,19 +1,9 @@
-<?php
-
-  if($id_user){
-      
-  } else {
-    header("location:index.php?page=user-access/login");
-  }
-
-?>
-
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
 <div class="container-content">
   <!-- export button start -->
   <div class="export data">
-    <a href="#" class="btn btn-info btn-lg">
+    <a href="export-csv.php" class="btn btn-info btn-lg">
       <span class="glyphicon glyphicon-export"></span> Export as Excel
     </a>
   </div>
@@ -30,70 +20,30 @@
     </div>
 
     <div class="row-text-center">
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-viruses fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="100" data-speed="1500"></h2>
-          <p class="count-text ">Esofagus</p>
-        </div>
-      </div>
 
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-virus-covid fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="1700" data-speed="1500"></h2>
-          <p class="count-text ">Gaster</p>
-        </div>
-      </div>
+    <?php
 
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-shield-virus fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="11900" data-speed="1500"></h2>
-          <p class="count-text ">Duodenum - Jejunum - Ileum</p>
-        </div>
-      </div>
+      $data = mysqli_query($conn, "SELECT * FROM kategori_ill");
+      $icon = ["fa-viruses", "fa-virus-covid", "fa-shield-virus", "fa-lungs-virus", 
+                "fa-bacteria", "fa-disease", "fa-head-side-virus", "fa-square-virus"];
+      while($dta = mysqli_fetch_array($data)){
+        $id_kategori = $dta['id_kategori'];
+        $nama_kategori = $dta['nama_kategori'];
+        $jumlah = mysqli_query($conn, "SELECT * FROM data_pasien WHERE type_ill = '$nama_kategori'");
+        $jumlah = mysqli_num_rows($jumlah);
+        ?>
 
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-lungs-virus fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-          <p class="count-text ">Kolon - Rektum</p>
+        <div class="col">
+          <div class="counter">
+            <i class="fa fa-solid <?php echo $icon[$id_kategori-1]; ?> fa-2x"></i>
+            <h2 class="timer count-title count-number" data-to="<?php echo $jumlah; ?>" data-speed="1500"></h2>
+            <p class="count-text "><?php echo $nama_kategori; ?></p>
+          </div>
         </div>
-      </div>
 
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-bacteria fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-          <p class="count-text ">Anus</p>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-disease fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-          <p class="count-text ">Hepatobiliar</p>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-head-side-virus fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-          <p class="count-text ">Pankreas</p>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="counter">
-          <i class="fa fa-solid fa-square-virus fa-2x"></i>
-          <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
-          <p class="count-text ">GIST</p>
-        </div>
-      </div>
-
+        <?php
+      }
+    ?>
       
     </div>
   </div>

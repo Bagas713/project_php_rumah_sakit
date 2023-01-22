@@ -1,3 +1,4 @@
+<table class="table table-hover">
 <?php
   
   if($id_user){
