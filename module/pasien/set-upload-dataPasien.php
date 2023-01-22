@@ -22,6 +22,6 @@
 
     $result = mysqli_multi_query($conn, $query);
 
-    header("location:".BASE_URL."index.php?page=home");
+    header("location:".BASE_URL."index.php?page=module/pasien/home");
 
 ?>
