@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <table class="table table-hover">
 =======
 <?php
@@ -27,7 +26,6 @@
 
 
   <table class="table table-hover">
->>>>>>> 6ff6583fe724aa9ae0f571709dba1d438d4fa717
   <thead>
     <tr>
       <th scope="col">No</th>
