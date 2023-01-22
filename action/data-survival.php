@@ -1,6 +1,7 @@
 <?php
 
   include_once("module/pasien/profile-pasien.php");
+  $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
 
 ?>
 

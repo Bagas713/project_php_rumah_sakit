@@ -1,6 +1,7 @@
 <table class="table table-hover">
 <?php
   
+  $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   if(!$id_user){
     header("location:index.php?page=user-access/login");
   }

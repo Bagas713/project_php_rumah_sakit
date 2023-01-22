@@ -19,34 +19,28 @@
         Identitas Pasien
       </button>
     </a>
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=action/data-klinis" >
+    <a href="<?php echo BASE_URL."index.php?page=action/data-klinis&id_pasien=$id_pasien"; ?>" >
       <button type="button" class="btn btn-info btn-lg column spc btn-menu" style="background-color: #379237;">
         Data Klinis
       </button>
     </a>
 
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=action/patologi" >
+    <a href="<?php echo BASE_URL."index.php?page=action/patologi&id_pasien=$id_pasien"; ?>" >
       <button type="button" class="btn btn-info btn-lg column spc btn-menu" style="background-color: #FF9F29;">
         Data Potologi
       </button>
     </a>
 
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=action/data-terapi" >
+    <a href="<?php echo BASE_URL."index.php?page=action/data-terapi&id_pasien=$id_pasien"; ?>" >
       <button type="button" class="btn btn-info btn-lg column spc btn-menu" style="background-color: #34B3F1;">
         Data Terapi
       </button>
     </a>
 
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=action/data-survival" >
+    <a href="<?php echo BASE_URL."index.php?page=action/data-survival&id_pasien=$id_pasien"; ?>" >
       <button type="button" class="btn btn-info btn-lg column spc btn-menu" style="background-color: #EB5353;">
         Data Survival
       </button>
-    </a>
-
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=action/data-report" >
-      <button type="button" class="btn btn-info btn-lg column spc btn-menu" style="background-color: #6A5495;">
-        Data Report
-      </button>    
     </a>
   </div>
 </div>
