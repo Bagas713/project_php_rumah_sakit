@@ -23,12 +23,10 @@
     
     $result = mysqli_multi_query($conn, $query);
 
-<<<<<<< HEAD
     mysqli_query($conn, "UPDATE kategori_ill SET jlh_kategori=jlh_kategori+1 WHERE nama_kategori='$type_ill' ");
 
     header("location:".BASE_URL."index.php?page=home");
-=======
+
     header("location:".BASE_URL."index.php?page=module/pasien/home");
->>>>>>> 6ff6583fe724aa9ae0f571709dba1d438d4fa717
 
 ?>
