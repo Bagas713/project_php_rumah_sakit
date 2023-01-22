@@ -5,7 +5,8 @@
 ?>
 
 <div class="container-content">
-<div class="containerTab" style="background:white">
+  <div class="containerTab" style="background:white">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Klinis</h2>
     <hr/>
       <h2>Klinis Esofagus
