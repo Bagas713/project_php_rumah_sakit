@@ -14,24 +14,12 @@
       Add
     </button>
     
-    <a href="http://localhost/project_php_rumah_sakit/index.php?page=data-pasien" >
+    <a href="<?php echo BASE_URL."index.php?page=module/pasien/history-pasien"; ?>" >
       <button type="button" class="btn btn-secondary btn-lg column">Update</button>
     </a>    
   </div>
 
   <div id="b1" class="containerTab" style="display:none;background:white">
-
-    <div class="action-home row" style="margin-left: 1px; margin-bottom: 20px; display: grid; row-gap: 10px; grid-template-columns: auto auto auto auto; ">
-      <button type="button" class="btn btn-light">Esofagus</button>
-      <button type="button" class="btn btn-light">Gaster</button>
-      <button type="button" class="btn btn-light">Kolon - Rektum</button>
-      <button type="button" class="btn btn-light">Anus</button>
-      <button type="button" class="btn btn-light">Hepatobiliar</button>
-      <button type="button" class="btn btn-light">Pankreas</button>
-      <button type="button" class="btn btn-light">GIST</button>
-      <button type="button" class="btn btn-light">Duodenum - Jejunum - Ileum</button>
-    </div>
-
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Identitas Pasien</h2>
 
