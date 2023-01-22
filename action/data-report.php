@@ -1,6 +1,6 @@
 <?php
 
-  include_once("profile-pasien.php");
+  include_once("module/pasien/profile-pasien.php");
 
 ?>
 
