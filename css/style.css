@@ -299,3 +299,15 @@ footer {
 }
 
 /* profile pasien end */
+
+/*Search*/
+button {
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+  padding: 7px 7px;
+  background: #82AAE3;
+  color: black;
+  font-weight: 500;
+  /* margin-left: 5px; */
+}

@@ -17,11 +17,11 @@
             </a>
           </li>
 
-          <li>
+          <!-- <li>
             <a href="http://localhost/project_php_rumah_sakit/index.php?page=data-pasien" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
               <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">Data Pasien</span>
             </a>
-          </li>
+          </li> -->
 
           <li>
             <a href="http://localhost/project_php_rumah_sakit/index.php?page=module/pasien/history-pasien" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
