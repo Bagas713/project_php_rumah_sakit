@@ -92,11 +92,13 @@
         
         if(file_exists($filename)) {
           include_once($filename);
-        } else if(file_exists($file)) {
-          include_once($file);
+        } else if($id_user) {
+            if(file_exists($file)) {
+              include_once($file);
+          }
         }
          else {
-            echo "Maaf, file tersebut tidak ada di dalam sistem";
+            header("location: ".BASE_URL."index.php?page=user-access/login");
         }
       ?>
     </div>

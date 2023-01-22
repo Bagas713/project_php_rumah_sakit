@@ -6,6 +6,7 @@
 
 <div class="container-content">
   <div class="containerTab" style="background:white">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Data Survival</h2>
       <form>
         </br>

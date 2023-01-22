@@ -39,9 +39,9 @@
     $button = "Update";
   }
 ?>
-
 <div class="container-content">
   <div class="containerTab" style="background:white">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Identitas Pasien</h2>
     <form action="<?php echo BASE_URL."module/pasien/action.php?id_pasien=$id_pasien"; ?>" method="POST">
       </br>
