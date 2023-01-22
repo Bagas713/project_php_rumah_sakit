@@ -21,10 +21,10 @@
 		$_SESSION['username'] = $row['username'];
 		$_SESSION['status_login'] = true;
 		
-		if(isset($_SESSION["status_login"])){
-			unset($_SESSION["status_login"]);
-			header("location: ".BASE_URL."index.php?page=home");
+		if(isset($_SESSION["username"])){
+			unset($_SESSION["username"]);
+			header("location: ".BASE_URL."index.php?page=module/pasien/home");
 		}else{
-			header("location: ".BASE_URL."index.php?page=home");
+			header("location: ".BASE_URL."index.php?page=module/pasien/home");
 		}
 	}

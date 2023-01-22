@@ -1,18 +1,5 @@
 <?php
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
-  // include_once("../index.php");
-  // include_once("../data-pasien.php");
-
-  
-
-  // include "../function/koneksi.php";
-  //   if (isset($_GET['id_pasien'])) {
-  //       $id_pasien = $_GET['id_pasien'];
-  //   }
-  //   else {
-  //       die ("Error. No ID Selected! ");    
-  //   }
-
 ?>
 
 <div class="container-content">

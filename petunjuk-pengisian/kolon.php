@@ -4,7 +4,8 @@
 
 ?>
 <div class="container-content">
-<div class="container-guide">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <div class="container-guide">
     <div class="title-content">
       <h3 id="kolon">Kolon - Rektum</h3>
     </div>  

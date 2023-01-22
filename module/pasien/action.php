@@ -36,6 +36,7 @@
                                                 phone='$phone', 
                                                 fam_phone='$fam_phone', 
                                                 type_ill='$type_ill' WHERE id_pasien='$id_pasien'");
+    mysqli_query($conn, "UPDATE kategori_ill SET jlh_kategori=jlh_kategori+1 WHERE nama_kategori='$type_ill' ");
   }
 
   header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien");

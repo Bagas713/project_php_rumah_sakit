@@ -1,4 +1,4 @@
-<div class="container-content" style="background-color:white;">
+<div class="container-content" style="background-color:white; margin-left:60px;">
   <section>
   
       <div class="row">
