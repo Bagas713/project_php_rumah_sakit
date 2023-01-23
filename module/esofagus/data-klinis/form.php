@@ -19,7 +19,6 @@
     $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_esofagus WHERE id_klinis_esofagus='$id_klinis_esofagus'");
     $row = mysqli_fetch_assoc($query_id);
 
-    
     $keluhan = $row['keluhan'];
     $period = $row['period'];
     $fam_history = $row['fam_history'];
