@@ -27,7 +27,7 @@
 
   <div class="container-content">
     <div class="history-pasien-table">
-      <table class="table table-hover">
+      <table class="table table-hover table-data">
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -49,8 +49,10 @@
       <tbody>
         <?php
         $pagination = isset($_GET["pagination"]) ? $_GET["pagination"] : 1;
-        $data_perhalaman = 3;
+        $data_perhalaman = 5;
         $mulai_dari = ($pagination-1) * $data_perhalaman;
+
+        $dataPagination = mysqli_query($conn, "SELECT * FROM data_pasien"); 
 
         // $queryPagination = mysqli_query($conn, )
 
@@ -71,10 +73,11 @@
         } else {
           $data = mysqli_query($conn, "SELECT * FROM data_pasien LIMIT $mulai_dari, $data_perhalaman"); 
         }
-        $no = 1;
+        $no = 1 + $mulai_dari;
         while($dta = mysqli_fetch_array($data)){
           $id_pasien = $dta['id_pasien'];
           $type_ill = $dta['type_ill'];
+
           ?>
           <tr>
           <th scope="row"><?php  echo $no++; ?></th>
@@ -103,7 +106,7 @@
   <div class="pagination">
     <div>
       <?php
-          $dataPagination = mysqli_query($conn, "SELECT * FROM data_pasien"); 
+          
           $total_data = mysqli_num_rows($dataPagination);
           $total_halaman = ceil($total_data / $data_perhalaman);
 
