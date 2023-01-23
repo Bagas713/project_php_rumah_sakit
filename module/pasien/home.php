@@ -58,15 +58,21 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Identitas Pasien (KTP)</label>
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Identitas Pasien </br> (No KTP)</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Identitas Pasien (KTP)" name="no_ktp">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Identitas Pasien (No KTP)" name="no_ktp">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Lahir</label>
         <div class="col-sm-10">
           <input type="date" class="form-control" id="inputPassword3" name="date_born">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Tempat Lahir</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" name="place_born" placeholder="Tempat Lahir">
         </div>
       </div>
       <div class="form-group row">

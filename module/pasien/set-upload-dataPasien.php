@@ -7,6 +7,7 @@
     $namaLengkap = isset($_POST['nama_lengkap']) ? $_POST['nama_lengkap'] : false;
     $no_ktp = isset($_POST['no_ktp']) ? $_POST['no_ktp'] : false;
     $date_born = isset($_POST['date_born']) ? $_POST['date_born'] : false;
+    $place_born = isset($_POST['place_born']) ? $_POST['place_born'] : false;
     $umur = isset($_POST['umur']) ? $_POST['umur'] : false;
     $pendidikan = isset($_POST['pendidikan']) ? $_POST['pendidikan'] : false;
     $job = isset($_POST['job']) ? $_POST['job'] : false;
@@ -17,9 +18,9 @@
     $type_ill = isset($_POST['type_ill']) ? $_POST['type_ill'] : false;
     
     $query = "INSERT INTO data_pasien (no_rm, nama_lengkap, no_ktp, date_born, umur, pendidikan,
-    job, alamat, alamat_rs, phone, fam_phone, type_ill) 
+    job, alamat, alamat_rs, phone, fam_phone, type_ill, place_born) 
                                 VALUES('$no_rm', '$namaLengkap', '$no_ktp', 
-    '$date_born','$umur', '$pendidikan', '$job', '$alamat', '$alamat_rs', '$phone', '$fam_phone', '$type_ill')";
+    '$date_born','$umur', '$pendidikan', '$job', '$alamat', '$alamat_rs', '$phone', '$fam_phone', '$type_ill', '$place_born')";
     
     $result = mysqli_multi_query($conn, $query);
 

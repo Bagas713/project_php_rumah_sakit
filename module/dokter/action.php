@@ -23,6 +23,7 @@
     $id_user = $_GET['id_user'];
     mysqli_query($conn, "UPDATE account SET first_name='$firstName',
                                             last_name='$lastName',
+                                            username='$username',
                                             phone='$phone',
                                             title='$title',
                                             short='$short',
