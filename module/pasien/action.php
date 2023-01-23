@@ -9,6 +9,7 @@
   $namaLengkap = $_POST['nama_lengkap'];
   $no_ktp = $_POST['no_ktp'];
   $date_born = $_POST['date_born'];
+  $place_born = $_POST['place_born'];
   $umur = $_POST['umur'];
   $pendidikan = $_POST['pendidikan'];
   $job = $_POST['job'];
@@ -20,14 +21,15 @@
   $button = $_POST['button'];
 
   if($button == "Save") {
-    mysqli_query($conn, "INSERT INTO data_pasien (no_rm, nama_lengkap, no_ktp, date_born, umur, pendidikan, job, alamat, alamat_rs, phone, fam_phone, type_ill) 
-                                        VALUES('$no_rm', '$namaLengkap', '$no_ktp', '$date_born','$umur', '$pendidikan', '$job', '$alamat', '$alamat_rs', '$phone', '$fam_phone', '$type_ill')"); 
+    mysqli_query($conn, "INSERT INTO data_pasien (no_rm, nama_lengkap, no_ktp, date_born, umur, pendidikan, job, alamat, alamat_rs, phone, fam_phone, type_ill, place_born) 
+                                        VALUES('$no_rm', '$namaLengkap', '$no_ktp', '$date_born','$umur', '$pendidikan', '$job', '$alamat', '$alamat_rs', '$phone', '$fam_phone', '$type_ill', '$place_born')"); 
   } else if($button == "Update") {
     $id_pasien = $_GET['id_pasien'];
     mysqli_query($conn, "UPDATE data_pasien SET no_rm='$no_rm', 
                                                 nama_lengkap='$namaLengkap', 
                                                 no_ktp='$no_ktp', 
                                                 date_born='$date_born', 
+                                                place_born='$place_born', 
                                                 umur='$umur', 
                                                 pendidikan='$pendidikan', 
                                                 job='$job', 

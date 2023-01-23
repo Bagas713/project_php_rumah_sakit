@@ -14,6 +14,7 @@
   $namaLengkap = "";
   $no_ktp = "";
   $date_born = "";
+  $place_born = "";
   $umur = "";
   $pendidikan = "";
   $job = "";
@@ -32,6 +33,7 @@
     $namaLengkap = $row['nama_lengkap'];
     $no_ktp = $row['no_ktp'];
     $date_born = $row['date_born'];
+    $place_born = $row['place_born'];
     $umur = $row['umur'];
     $pendidikan = $row['pendidikan'];
     $job = $row['job'];
@@ -62,7 +64,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Identitas Pasien (KTP)</label>
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Identitas Pasien </br> (No KTP)</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputPassword3" placeholder="Identitas Pasien (KTP)" name="no_ktp" value="<?php echo $no_ktp; ?>">
         </div>
@@ -71,6 +73,12 @@
         <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Lahir</label>
         <div class="col-sm-10">
           <input type="date" class="form-control" id="inputPassword3" name="date_born" value="<?php echo $date_born; ?>">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Tempat Lahir</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" name="place_born" value="<?php echo $place_born; ?>">
         </div>
       </div>
       <div class="form-group row">
@@ -83,9 +91,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Pendidikan</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="pendidikan" value="<?php echo $pendidikan; ?>">
-            <option>SD</option>
-            <option>SMP/SMA</option>
-            <option option>S1/S2</option>
+          <?php
+              
+              $data_pendidikan = mysqli_query($conn, "SELECT pendidikan FROM data_pasien");
+              while ($row = mysqli_fetch_array($data_pendidikan)) {
+                echo "<option selected value='".$row['pendidikan']."'>".$row['pendidikan']."</option>";
+              }
+
+              $all_pendidikan = mysqli_query($conn, "SELECT pendidikan FROM data_pasien");
+              while($rows = mysqli_fetch_array($all_pendidikan)) {
+                if($rows['pendidikan'] != $pendidikan) {
+                  echo "<option value='".$rows['pendidikan']."'>".$rows['pendidikan']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -93,12 +113,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Pekerjaan</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="job" value="<?php echo $job; ?>">
-            <option>Buruh</option>
-            <option>Petani</option>
-            <option>Wiraswasta</option>
-            <option>Guru</option>
-            <option>Swasta/PNS</option>
-            <option>Tidak Bekerja</option>
+          <?php
+              
+              $data_job = mysqli_query($conn, "SELECT job FROM data_pasien");
+              while ($row = mysqli_fetch_array($data_job)) {
+                echo "<option selected value='".$row['job']."'>".$row['job']."</option>";
+              }
+
+              $all_job = mysqli_query($conn, "SELECT job FROM data_pasien");
+              while($rows = mysqli_fetch_array($all_job)) {
+                if($rows['job'] != $type_job) {
+                  echo "<option value='".$rows['job']."'>".$rows['job']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -129,14 +158,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Kasus</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="type_ill" value="<?php echo $type_ill; ?>">
-            <option>Esofagus</option>
-            <option>Gaster</option>
-            <option>Duodenum-Jejunum-Ileum</option>
-            <option>Kolom-Rektum</option>
-            <option>Anus</option>
-            <option>Heptibiliar</option>
-            <option>Pankreas</option>
-            <option>GIST</option>
+            <?php
+              
+              $data_ill = mysqli_query($conn, "SELECT type_ill FROM data_pasien");
+              while ($row = mysqli_fetch_array($data_ill)) {
+                echo "<option selected value='".$row['type_ill']."'>".$row['type_ill']."</option>";
+              }
+
+              $all_ill = mysqli_query($conn, "SELECT nama_kategori FROM kategori_ill");
+              while($rows = mysqli_fetch_array($all_ill)) {
+                if($rows['nama_kategori'] != $type_ill) {
+                  echo "<option value='".$rows['nama_kategori']."'>".$rows['nama_kategori']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>

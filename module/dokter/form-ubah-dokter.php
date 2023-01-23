@@ -1,5 +1,4 @@
 <?php
-  // include_once("function/koneksi.php");
 
   if(!$id_user){
     header("location:index.php?page=user-access/login");
@@ -9,6 +8,7 @@
 
   $firstName = "";
   $lastName = "";
+  $username = "";
   $phone = "";
   $title = "";
   $short = "";
@@ -22,6 +22,7 @@
 
     $firstName = $row['first_name'];
     $lastName = $row['last_name'];
+    $username = $row['username'];
     $phone = $row['phone'];
     $title = $row['title'];
     $short = $row['short'];
@@ -42,6 +43,12 @@
     <label for="inputPassword3" class="col-sm-2 col-form-label">Last Name</label>
     <div class="col-sm-9">
       <input type="text"  class="form-control" id="inputPassword3" placeholder="Last Name" name="last_name" value="<?php echo $lastName ?>">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-9">
+      <input type="text"  class="form-control" id="inputPassword3" placeholder="Username" name="username" value="<?php echo $username ?>">
     </div>
   </div>
   <div class="form-group row">
