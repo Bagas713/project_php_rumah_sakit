@@ -6,7 +6,7 @@
     $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
     
 
-    // $id_klinis_esofagus = $_POST['id_klinis_esofagus'];
+    
     $keluhan = $_POST['keluhan'];
     $period = $_POST['period'];
     $fam_history = $_POST['fam_history'];
