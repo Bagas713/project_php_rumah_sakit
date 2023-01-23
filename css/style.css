@@ -331,6 +331,11 @@ button {
   font-size: 14px;
 }
 
+.container-content-table .history-pasien-table table thead tr th,
+.container-content-table .history-pasien-table table tbody tr td {
+  white-space: nowrap;
+}
+
 .container-content-table .pagination {
   display: flex;
   justify-content: flex-end;

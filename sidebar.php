@@ -22,12 +22,6 @@
             </a>
           </li>
 
-          <!-- <li>
-            <a href="http://localhost/project_php_rumah_sakit/index.php?page=data-pasien" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-              <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">Data Pasien</span>
-            </a>
-          </li> -->
-
           <li>
             <a href="http://localhost/project_php_rumah_sakit/index.php?page=module/pasien/history-pasien" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
               <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">History Pasien</span>
@@ -39,12 +33,23 @@
               <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">Petunjuk Pengisian</span>
             </a>
           </li>
-          
-          <li>
-            <a href="http://localhost/project_php_rumah_sakit/index.php?page=summary-data" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-              <i class="fs-4 "></i> <span class="ms-1 d-none d-sm-inline">Summary Data</span>
-            </a>
-          </li>
+          <?php
+
+            $data = mysqli_query($conn, "SELECT * FROM account WHERE id_user='$id_user'");
+
+            while($d = mysqli_fetch_array($data)){
+              if($d['level'] == "Super Admin"){
+                echo "
+                  <li>
+                    <a href='http://localhost/project_php_rumah_sakit/index.php?page=Summary-data' data-bs-toggle='collapse' class='nav-link px-0 align-middle text-white'>
+                      <i class='fs-4 '></i> <span class='ms-1 d-none d-sm-inline'>Summary Data</span>
+                    </a>
+                  </li>
+                ";
+              }
+            }
+
+          ?>
       
         </ul>
       </div>
