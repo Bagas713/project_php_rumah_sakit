@@ -2,6 +2,7 @@
 
   include_once("module/pasien/profile-pasien.php");
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
+  $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
 
 ?>
 
@@ -9,9 +10,8 @@
   <div class="containerTab" style="background:white">
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Klinis</h2>
-    <hr/>
-      <h2>Klinis Esofagus
-      </h2>
+      <hr/>
+      <h2>Klinis Esofagus</h2>
       <form>
         </br>
         <div class="form-group row">
@@ -77,11 +77,11 @@
           </div>
         </div>
       </form>
-    <hr/>
-    <h2>Klinis Gaster
-    </h2>
-    <form>
-    <div class="form-group row">
+
+      <hr/>
+      <h2>Klinis Gaster</h2>
+      <form>
+        <div class="form-group row">
           <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker menu</label>
           <div class="col-sm-10">
             <select id="inputState" class="form-control">
@@ -139,80 +139,77 @@
             <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ">
           </div>
         </div>
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-    <hr/>
-    <h2>Klinis Duodenum–Jejunum-Ileum 
-    </h2>
-    <form>
-    <div class="form-group row">
-          <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
-          <div class="col-sm-10">
-            <select id="inputState" class="form-control">
-              <optio>Nyeri</option>
-              <option>Kembung</option>
-              <option>Muntah</option>
-              <option>BAB Hitam</option>
-              <option>Sulit Menelan</option>
-              <option>Penurunan BB</option>
-            </select>
-          </div>
-        </div>
+      <hr/>
+      <h2>Klinis Duodenum–Jejunum-Ileum</h2>
+      <form>
         <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Lama keluhan</label>
-          <div class="col-sm-7">
-            <input type="text" class="form-control" id="inputPassword3" placeholder="Lama keluhan">minggu
+            <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
+            <div class="col-sm-10">
+              <select id="inputState" class="form-control">
+                <optio>Nyeri</option>
+                <option>Kembung</option>
+                <option>Muntah</option>
+                <option>BAB Hitam</option>
+                <option>Sulit Menelan</option>
+                <option>Penurunan BB</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputState" class="col-sm-2 col-form-label">Riwayat keluarga</label>
-          <div class="col-sm-10">
-            <select id="inputState" class="form-control">
-              <option>Ada</option>
-              <option>Tidak</option>
-            </select>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Lama keluhan</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" id="inputPassword3" placeholder="Lama keluhan">minggu
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputState" class="col-sm-2 col-form-label">Lokasi</label>
-          <div class="col-sm-10">
-            <select id="inputState" class="form-control">
-              <option>Atas</option>
-              <option>Tengah</option>
-              <option>Bawah</option>
-            </select>
+          <div class="form-group row">
+            <label for="inputState" class="col-sm-2 col-form-label">Riwayat keluarga</label>
+            <div class="col-sm-10">
+              <select id="inputState" class="form-control">
+                <option>Ada</option>
+                <option>Tidak</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Endoskopi</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3" placeholder="Endoskopi">
+          <div class="form-group row">
+            <label for="inputState" class="col-sm-2 col-form-label">Lokasi</label>
+            <div class="col-sm-10">
+              <select id="inputState" class="form-control">
+                <option>Atas</option>
+                <option>Tengah</option>
+                <option>Bawah</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">CT Scan infiltrasi organ</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ">
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Endoskopi</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputPassword3" placeholder="Endoskopi">
+            </div>
           </div>
-        </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">CT Scan infiltrasi organ</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+      </form>
 
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-      </div>
-    </form>
-
-    <hr/>
-    <h2>Klinis Kolon-Rektum
-    </h2>
-    <form>
-    <div class="form-group row">
+      <hr/>
+      <h2>Klinis Kolon-Rektum</h2>
+      <form>
+        <div class="form-group row">
           <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
           <div class="col-sm-10">
             <select id="inputState" class="form-control">
@@ -272,19 +269,18 @@
             <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ">
           </div>
         </div>
-
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-    <hr/>
-    <h2>Klinis Anus
-    </h2>
-    <form>
-    <div class="form-group row">
+      <hr/>
+      <h2>Klinis Anus
+      </h2>
+      <form>
+        <div class="form-group row">
           <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
           <div class="col-sm-10">
             <select id="inputState" class="form-control">
@@ -335,19 +331,17 @@
             <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ">
           </div>
         </div>
-
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-    <hr/>
-    <h2>Klinis Hepatobilier
-    </h2>
-    <form>
-    <div class="form-group row">
+      <hr/>
+      <h2>Klinis Hepatobilier</h2>
+      <form>
+        <div class="form-group row">
           <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
           <div class="col-sm-10">
             <select id="inputState" class="form-control">
@@ -397,19 +391,17 @@
             <input type="text" class="form-control" id="inputPassword3" placeholder="MRCP">
           </div>
         </div>
-
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-    <hr/>
-    <h2>Klinis Pankreas
-    </h2>
-    <form>
-    <div class="form-group row">
+      <hr/>
+      <h2>Klinis Pankreas</h2>
+      <form>
+        <div class="form-group row">
           <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
           <div class="col-sm-10">
             <select id="inputState" class="form-control">
@@ -458,18 +450,17 @@
           </div>
         </div>
 
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-    <hr/>
-    <h2>Klinis GIST
-    </h2>
-    <form>
-    <div class="form-group row">
+      <hr/>
+      <h2>Klinis GIST</h2>
+      <form>
+        <div class="form-group row">
           <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
           <div class="col-sm-10">
             <select id="inputState" class="form-control">
@@ -516,11 +507,11 @@
             <input type="text" class="form-control" id="inputPassword3" placeholder="MRCP">
           </div>
         </div>
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
   </div>
 </div>

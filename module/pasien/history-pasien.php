@@ -2,6 +2,8 @@
 <?php
   
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
+  $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
+
   if(!$id_user){
     header("location:index.php?page=user-access/login");
   }
@@ -64,6 +66,7 @@
     $no = 1;
     while($dta = mysqli_fetch_array($data)){
       $id_pasien = $dta['id_pasien'];
+      $type_ill = $dta['type_ill'];
       ?>
       <tr>
       <th scope="row"><?php  echo $no++; ?></th>
@@ -78,8 +81,8 @@
       <td><?php echo $dta['job']; ?></td>
       <td><?php echo $dta['phone']; ?></td>
       <td><?php echo $dta['fam_phone']; ?></td>
-      <td><?php echo $dta['type_ill']; ?></td>
-      <td><a href="<?php echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien"; ?>", ><i class="fa-regular fa-rectangle-list"></i></a></td>
+      <td><?php echo $type_ill; ?></td>
+      <td><a href="<?php echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill"; ?>", ><i class="fa-regular fa-rectangle-list"></i></a></td>
     </tr>
     <?php  
     }

@@ -39,4 +39,4 @@
     mysqli_query($conn, "UPDATE kategori_ill SET jlh_kategori=jlh_kategori+1 WHERE nama_kategori='$type_ill' ");
   }
 
-  header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien");
+  header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill");

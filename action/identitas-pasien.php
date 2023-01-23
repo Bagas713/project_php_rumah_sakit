@@ -8,6 +8,7 @@
   // include_once("../function/koneksi.php");
 
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
+  $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
 
   $no_rm = "";
   $namaLengkap = "";

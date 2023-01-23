@@ -1,6 +1,7 @@
 <?php
 
   include_once("module/pasien/profile-pasien.php");
+  $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
 
 ?>
 
