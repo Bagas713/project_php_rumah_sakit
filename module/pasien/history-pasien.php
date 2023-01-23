@@ -34,6 +34,7 @@
             <th scope="col">No RM</th>
             <th scope="col">Nama</th>
             <th scope="col">No KTP</th>
+            <th scope="col">Tempat Lahir</th>
             <th scope="col">Tanggal Lahir</th>
             <th scope="col">Umur</th>
             <th scope="col">Alamat RS</th>
@@ -61,6 +62,7 @@
               $data = mysqli_query($conn, "SELECT * FROM data_pasien WHERE nama_lengkap LIKE '%$cari%'||
                                                                           no_rm LIKE '%$cari%'||
                                                                           no_ktp LIKE '%$cari%'||
+                                                                          place_born LIKE '%$cari%'||
                                                                           date_born LIKE '%$cari%'||
                                                                           umur LIKE '%$cari%'||
                                                                           alamat LIKE '%$cari%'||
@@ -85,6 +87,7 @@
             <td><?php echo $dta['no_rm']; ?></td>
             <td><?php echo $dta['nama_lengkap']; ?></td>
             <td><?php echo $dta['no_ktp']; ?></td>
+            <td><?php echo $dta['place_born']; ?></td>
             <td><?php echo $dta['date_born']; ?></td>
             <td><?php echo $dta['umur']; ?></td>
             <td><?php echo $dta['alamat_rs']; ?></td>

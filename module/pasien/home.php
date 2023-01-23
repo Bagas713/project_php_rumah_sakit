@@ -136,7 +136,7 @@
             <option>Duodenum-Jejunum-Ileum</option>
             <option>Kolom-Rektum</option>
             <option>Anus</option>
-            <option>Heptibiliar</option>
+            <option>Hepatobilier</option>
             <option>Pankreas</option>
             <option>GIST</option>
           </select>
