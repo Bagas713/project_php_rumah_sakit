@@ -14,6 +14,10 @@
     $ct_scan = $_POST['ct_scan'];
     $button = $_POST['button'];
 
+    $datas = mysqli_query($conn, "SELECT id_klinis_esofagus FROM data_klinis_esofagus WHERE dk_esofagus_id_pasien = '$id_pasien'");
+    while($dta = mysqli_fetch_assoc($datas)) {
+        $id_klinis_esofaguss = $dta['id_klinis_esofagus'];
+    }
     // mysqli_query($conn, "INSERT INTO data_klinis_esofagus 
     //                     (keluhan, period, fam_history, lokasi, esofagografi, endoskopi, ct_scan, dk_esofagus_id_pasien, dk_esofagus_nama)
     //                     VALUES ('$keluhan', '$period', '$fam_history', '$lokasi', '$esofagografi',
@@ -32,7 +36,7 @@
                                                 lokasi = '$lokasi',
                                                 esofagografi = '$esofagografi',
                                                 endoskopi = '$endoskopi',
-                                                ct_scan = '$ct_scan' WHERE id_klinis_esofagus = '$id_klinis_esofagus'");
+                                                ct_scan = '$ct_scan' WHERE id_klinis_esofagus = '$id_klinis_esofaguss'");
     }
 
     $data = mysqli_query($conn, "SELECT id_klinis_esofagus FROM data_klinis_esofagus WHERE dk_esofagus_id_pasien = '$id_pasien'");
