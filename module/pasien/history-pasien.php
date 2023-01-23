@@ -1,4 +1,3 @@
-<table class="table table-hover">
 <?php
   
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
@@ -9,7 +8,7 @@
   }
 ?>
 
-<div class="container-content">
+<div class="container-content" style="position: fixed;">
   <div class="ti">
     <h2>Data Pasien</h2>
   </div>
@@ -23,8 +22,9 @@
       </div>
     </div>
   </form>
+</div>
 
-
+<div class="container-content">
   <table class="table table-hover">
   <thead>
     <tr>
@@ -46,6 +46,12 @@
   </thead>
   <tbody>
     <?php
+    $pagination = isset($_GET["pagination"]) ? $_GET["pagination"] : 1;
+    $data_perhalaman = 3;
+    $mulai_dari = ($pagination-1) * $data_perhalaman;
+
+    // $queryPagination = mysqli_query($conn, )
+
     if(isset($_POST["search"]))  {
       $cari = $_POST['cari'];
       $data = mysqli_query($conn, "SELECT * FROM data_pasien WHERE nama_lengkap LIKE '%$cari%'||
@@ -61,7 +67,7 @@
                                                                   fam_phone LIKE '%$cari%'||
                                                                   type_ill LIKE '%$cari%'"); 
     } else {
-      $data = mysqli_query($conn, "SELECT * FROM data_pasien"); 
+      $data = mysqli_query($conn, "SELECT * FROM data_pasien LIMIT $mulai_dari, $data_perhalaman"); 
     }
     $no = 1;
     while($dta = mysqli_fetch_array($data)){
@@ -87,6 +93,21 @@
     <?php  
     }
     ?>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination">
+  <div>
+    <?php
+        $dataPagination = mysqli_query($conn, "SELECT * FROM data_pasien"); 
+        $total_data = mysqli_num_rows($dataPagination);
+        $total_halaman = ceil($total_data / $data_perhalaman);
+
+        for($i = 1; $i<=$total_halaman; $i++) {
+          
+          echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$i'>$i</a>";
+        }
+      ?>
   </div>
+</div>
