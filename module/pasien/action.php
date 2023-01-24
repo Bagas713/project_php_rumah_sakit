@@ -39,6 +39,28 @@
                                                 fam_phone='$fam_phone', 
                                                 type_ill='$type_ill' WHERE id_pasien='$id_pasien'");
     mysqli_query($conn, "UPDATE kategori_ill SET jlh_kategori=jlh_kategori+1 WHERE nama_kategori='$type_ill' ");
-  }
 
-  header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill");
+    $data = mysqli_query($conn, "SELECT id_pasien FROM data_pasien WHERE id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_pasien = $dta['id_pasien'];
+        }
+        
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+        $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+        $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+        if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_esofagus=$id_patologi_esofagus&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+        } else if($id_klinis && $id_patologi && $id_data_terapi) {
+            header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_esofagus=$id_patologi_esofagus&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+        } else if($id_klinis && $id_patologi) {
+            header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_esofagus=$id_patologi_esofagus&id_klinis=$id_klinis&id_patologi=$id_patologi");
+        } else if($id_klinis) {
+            header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_esofagus=$id_patologi_esofagus&id_klinis=$id_klinis");
+        } else {
+            header("location:".BASE_URL."index.php?page=action/identitas-pasien&id_pasien=$id_pasien&type_ill=$type_ill");
+        }
+
+  }
+?>
