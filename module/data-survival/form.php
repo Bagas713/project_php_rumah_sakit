@@ -42,18 +42,52 @@
 
                 if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
                     echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
-                } else if($id_klinis && $id_patologi && $id_data_terapi) {
+                } 
+                else if($id_klinis && $id_patologi && $id_data_terapi) {
                     echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
-                } else if($id_klinis && $id_patologi) {
+                } 
+                else if($id_klinis && $id_patologi && $id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
+                }
+                else if($id_patologi && $id_data_terapi && $id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+                }
+                else if($id_klinis && $id_data_terapi && $id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+                }
+                else if($id_klinis && $id_patologi) {
                     echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi";
-                } else if($id_klinis) {
+                } 
+                else if($id_klinis && $id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_data_survival=$id_data_survival";
+                } 
+                else if($id_klinis && $id_data_terapi) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi";
+                } 
+                else if($id_patologi && $id_data_terapi) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
+                } 
+                else if($id_patologi && $id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
+                } 
+                else if($id_data_terapi && $id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+                }
+                else if($id_klinis) {
                     echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis";
-                } else if($id_klinis_esofagus) {
-                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis_esofagus=$id_klinis_esofagus";
-                } else {
+                } 
+                else if($id_patologi) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi";
+                } 
+                else if($id_data_terapi) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_data_terapi=$id_data_terapi";
+                } 
+                else if($id_data_survival) {
+                    echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_data_survival=$id_data_survival";
+                }
+                else {
                     echo BASE_URL."module/data-survival/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
                 }
-
                 ?>
             " method="POST">
         </br>
@@ -61,8 +95,21 @@
                 <label for="inputState" class="col-sm-2 col-form-label">Status</label>
                 <div class="col-sm-10">
                 <select id="inputState" class="form-control" name="ds_status" value="<?php echo $ds_status; ?>" >
-                    <option>Hidup</option>
-                    <option>Meninggal</option>
+                    <?php
+                
+                        $data_alv = mysqli_query($conn, "SELECT ds_status FROM data_survival WHERE ds_id_pasien = '$id_pasien'");
+                        while ($row = mysqli_fetch_array($data_alv)) {
+                            echo "<option selected value='".$row['ds_status']."'>".$row['ds_status']."</option>";
+                        }
+
+                        $all_alv = mysqli_query($conn, "SELECT ds_status FROM data_survival");
+                        while($rows = mysqli_fetch_array($all_alv)) {
+                            if($rows['ds_status'] != $ds_status) {
+                            echo "<option value='".$rows['ds_status']."'>".$rows['ds_status']."</option>";
+                            }
+                        }
+
+                    ?>
                 </select>
                 </div>
             </div>

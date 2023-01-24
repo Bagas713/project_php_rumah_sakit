@@ -53,16 +53,51 @@
 
               if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
                 echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
-              } else if($id_klinis && $id_patologi && $id_data_survival) {
-                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
-              } else if($id_klinis && $id_patologi) {
+              } 
+              else if($id_klinis && $id_patologi && $id_data_terapi) {
                 echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
-              } else if($id_klinis) {
+              } 
+              else if($id_klinis && $id_patologi && $id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
+              }
+              else if($id_patologi && $id_data_terapi && $id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+              }
+              else if($id_klinis && $id_data_terapi && $id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+              }
+              else if($id_klinis && $id_patologi) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi";
+              } 
+              else if($id_klinis && $id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_data_survival=$id_data_survival";
+              } 
+              else if($id_klinis && $id_data_terapi) {
                 echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi";
-              } else if($id_klinis_esofagus) {
-                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis_esofagus=$id_klinis_esofagus&id_data_terapi=$id_data_terapi";
-              } else {
+              } 
+              else if($id_patologi && $id_data_terapi) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
+              } 
+              else if($id_patologi && $id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
+              } 
+              else if($id_data_terapi && $id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+              }
+              else if($id_klinis) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis";
+              } 
+              else if($id_patologi) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_patologi=$id_patologi";
+              } 
+              else if($id_data_terapi) {
                 echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_data_terapi=$id_data_terapi";
+              } 
+              else if($id_data_survival) {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_data_survival=$id_data_survival";
+              }
+              else {
+                echo BASE_URL."module/data-terapi/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
               }
 
             ?>
@@ -72,10 +107,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Terapi 1</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="terapi_1" value="<?php echo $terapi1; ?>" >
-            <option>Operasi</option>
-            <option>Kemoterapi</option>
-            <option>Radioterapi</option>
-            <option>Suportif</option>
+            <?php
+              
+              $data_thr1 = mysqli_query($conn, "SELECT terapi_1 FROM data_terapi WHERE dt_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_thr1)) {
+                echo "<option selected value='".$row['terapi_1']."'>".$row['terapi_1']."</option>";
+              }
+
+              $all_thr1 = mysqli_query($conn, "SELECT terapi_1 FROM data_terapi");
+              while($rows = mysqli_fetch_array($all_thr1)) {
+                if($rows['terapi_1'] != $terapi1) {
+                  echo "<option value='".$rows['terapi_1']."'>".$rows['terapi_1']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -90,10 +136,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Terapi 2</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="terapi_2" value="<?php echo $terapi2; ?>" >
-            <option>Operasi</option>
-            <option>Kemoterapi</option>
-            <option>Radioterapi</option>
-            <option>Suportif</option>
+            <?php
+              
+              $data_thr2 = mysqli_query($conn, "SELECT terapi_2 FROM data_terapi WHERE dt_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_thr2)) {
+                echo "<option selected value='".$row['terapi_2']."'>".$row['terapi_2']."</option>";
+              }
+
+              $all_thr2 = mysqli_query($conn, "SELECT terapi_2 FROM data_terapi");
+              while($rows = mysqli_fetch_array($all_thr2)) {
+                if($rows['terapi_2'] != $terapi2) {
+                  echo "<option value='".$rows['terapi_2']."'>".$rows['terapi_2']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -108,10 +165,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Terapi 3</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="terapi_3" value="<?php echo $terapi3; ?>" >
-            <option>Operasi</option>
-            <option>Kemoterapi</option>
-            <option>Radioterapi</option>
-            <option>Suportif</option>
+          <?php
+              
+              $data_thr3 = mysqli_query($conn, "SELECT terapi_3 FROM data_terapi WHERE dt_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_thr3)) {
+                echo "<option selected value='".$row['terapi_3']."'>".$row['terapi_3']."</option>";
+              }
+
+              $all_thr3 = mysqli_query($conn, "SELECT terapi_3 FROM data_terapi");
+              while($rows = mysqli_fetch_array($all_thr3)) {
+                if($rows['terapi_3'] != $terapi3) {
+                  echo "<option value='".$rows['terapi_3']."'>".$rows['terapi_3']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -119,17 +187,28 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Keterangan Terapi 3</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Keterangan Terapi 3" name="ket_terapi_3" value="<?php echo $ketTerapi4; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Keterangan Terapi 3" name="ket_terapi_3" value="<?php echo $ketTerapi3; ?>" >
         </div>
       </div>
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Terapi 4</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="terapi_4" value="<?php echo $terapi4; ?>" >
-            <option>Operasi</option>
-            <option>Kemoterapi</option>
-            <option>Radioterapi</option>
-            <option>Suportif</option>
+            <?php
+              
+              $data_thr4 = mysqli_query($conn, "SELECT terapi_4 FROM data_terapi WHERE dt_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_thr4)) {
+                echo "<option selected value='".$row['terapi_4']."'>".$row['terapi_4']."</option>";
+              }
+
+              $all_thr4 = mysqli_query($conn, "SELECT terapi_4 FROM data_terapi");
+              while($rows = mysqli_fetch_array($all_thr4)) {
+                if($rows['terapi_4'] != $terapi4) {
+                  echo "<option value='".$rows['terapi_4']."'>".$rows['terapi_4']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -144,10 +223,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Terapi 5</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="terapi_5" value="<?php echo $terapi5; ?>" >
-            <option>Operasi</option>
-            <option>Kemoterapi</option>
-            <option>Radioterapi</option>
-            <option>Suportif</option>
+            <?php
+              
+              $data_thr5 = mysqli_query($conn, "SELECT terapi_5 FROM data_terapi WHERE dt_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_thr5)) {
+                echo "<option selected value='".$row['terapi_5']."'>".$row['terapi_5']."</option>";
+              }
+
+              $all_thr5 = mysqli_query($conn, "SELECT terapi_5 FROM data_terapi");
+              while($rows = mysqli_fetch_array($all_thr5)) {
+                if($rows['terapi_5'] != $terapi5) {
+                  echo "<option value='".$rows['terapi_5']."'>".$rows['terapi_5']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
