@@ -67,11 +67,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="keluhan" value="<?php echo $keluhan; ?>" >
-            <option>Gangguan pola BAB</option>
-            <option>BAB berdarah</option>
-            <option>Nyeri</option>
-            <option>Tidak Bisa BAB</option>
-            <option>Penurunan BB</option>
+          <?php
+              
+              $data_keluhan = mysqli_query($conn, "SELECT keluhan FROM data_klinis_kolon WHERE dk_kolon_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_keluhan)) {
+                echo "<option selected value='".$row['keluhan']."'>".$row['keluhan']."</option>";
+              }
+
+              $all_keluhan = mysqli_query($conn, "SELECT keluhan FROM data_klinis_kolon");
+              while($rows = mysqli_fetch_array($all_keluhan)) {
+                if($rows['keluhan'] != $keluhan) {
+                  echo "<option value='".$rows['keluhan']."'>".$rows['keluhan']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -87,8 +97,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Riwayat keluarga</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="fam_history" value="<?php echo $fam_history; ?>" > 
-            <option>Ada</option>
-            <option>Tidak</option>
+          <?php
+              
+              $data_fhis = mysqli_query($conn, "SELECT fam_history FROM data_klinis_kolon WHERE dk_kolon_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_fhis)) {
+                echo "<option selected value='".$row['fam_history']."'>".$row['fam_history']."</option>";
+              }
+
+              $all_fhis= mysqli_query($conn, "SELECT fam_history FROM data_klinis_kolon");
+              while($rows = mysqli_fetch_array($all_fhis)) {
+                if($rows['fam_history'] != $fam_history) {
+                  echo "<option value='".$rows['fam_history']."'>".$rows['fam_history']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -97,8 +120,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Riwayat Infeksi HPV</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="infection_history" value="<?php echo $infection_history; ?>" > 
-            <option>Ada</option>
-            <option>Tidak</option>
+          <?php
+              
+              $data_inf = mysqli_query($conn, "SELECT infection_history FROM data_klinis_kolon WHERE dk_kolon_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_inf)) {
+                echo "<option selected value='".$row['infection_history']."'>".$row['infection_history']."</option>";
+              }
+
+              $all_inf = mysqli_query($conn, "SELECT infection_history FROM data_klinis_kolon");
+              while($rows = mysqli_fetch_array($all_inf)) {
+                if($rows['infection_history'] != $infection_history) {
+                  echo "<option value='".$rows['infection_history']."'>".$rows['infection_history']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -107,11 +143,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Lokasi</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="lokasi" value="<?php echo $lokasi; ?>" >
-            <option>Ascendes</option>
-            <option>Transversum</option>
-            <option>Descendes</option>
-            <option>Sigmoid</option>
-            <option>Rektum</option>
+          <?php
+              
+              $data_loc = mysqli_query($conn, "SELECT lokasi FROM data_klinis_kolon WHERE dk_kolon_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_loc)) {
+                echo "<option selected value='".$row['lokasi']."'>".$row['lokasi']."</option>";
+              }
+
+              $all_loc = mysqli_query($conn, "SELECT lokasi FROM data_klinis_kolon");
+              while($rows = mysqli_fetch_array($all_loc)) {
+                if($rows['lokasi'] != $lokasi) {
+                  echo "<option value='".$rows['lokasi']."'>".$rows['lokasi']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
