@@ -9,10 +9,7 @@
   $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
   $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
   $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
-<<<<<<< HEAD
   
-=======
->>>>>>> 898f35bc7566f720c4af93ed4e9360f24f2ae522
   
   $keluhan = "";
   $period = "";
@@ -24,16 +21,6 @@
   $button = "Save";
 
   if($id_klinis_kolon || $id_klinis) {
-<<<<<<< HEAD
-=======
-    if($id_klinis_kolon) {
-      $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_kolon WHERE id_klinis_kolon='$id_klinis_kolon'");
-      $row = mysqli_fetch_assoc($query_id);
-    } else {
-      $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_kolon WHERE id_klinis_kolon='$id_klinis'");
-      $row = mysqli_fetch_assoc($query_id);
-    }
->>>>>>> 898f35bc7566f720c4af93ed4e9360f24f2ae522
 
     if($id_klinis_kolon) {
       $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_kolon WHERE id_klinis_kolon='$id_klinis_kolon'");
@@ -59,7 +46,6 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Klinis Kolon-Rektum</h2>
 
-<<<<<<< HEAD
     <form action="<?php 
 
     if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
@@ -76,23 +62,6 @@
       echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
     }
     ?>" method="POST">
-=======
-    <form action="
-            <?php 
-              if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
-                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
-              } else if($id_klinis && $id_patologi && $id_data_terapi) {
-                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
-              } else if($id_klinis && $id_patologi) {
-                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi";
-              } else if($id_klinis) {
-                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis";
-              } else {
-                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
-              }
-            ?>
-          " method="POST">
->>>>>>> 898f35bc7566f720c4af93ed4e9360f24f2ae522
       </br>
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
