@@ -30,7 +30,6 @@
             $id_data_terapi = $dta['id_data_terapi'];
         }
 
-        // $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : $id_data_terapi;
         $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
         $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
         $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;

@@ -23,21 +23,32 @@
     $grade_histopatologi = $_POST['grade_histopatologi'];
     $button = $_POST['button'];
 
+    $datass = mysqli_query($conn, "SELECT nama_lengkap FROM data_pasien WHERE id_pasien = '$id_pasien'");
+    while($dta = mysqli_fetch_assoc($datass)) {
+        $namaLengkap = $dta['nama_lengkap'];
+    }
+
     $datas = mysqli_query($conn, "SELECT id_patologi_anus FROM patologi_anus WHERE dp_anus_id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($datas)) {
         $id_patologi_anuss = $dta['id_patologi_anus'];
     }
-    // mysqli_query($conn, "INSERT INTO data_klinis_esofagus 
-    //                     (keluhan, period, fam_history, lokasi, esofagografi, endoskopi, ct_scan, dk_esofagus_id_pasien, dk_esofagus_nama)
-    //                     VALUES ('$keluhan', '$period', '$fam_history', '$lokasi', '$esofagografi',
-    //                     '$endoskopi', '$ct_scan', '$id_pasien', '$type_ill' )");
-
 
     if($button == "Save") {
-        mysqli_query($conn, "INSERT INTO patologi_anus (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, lvi, invasi_perineural, catatan_temuan_operasi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histopatologi, dp_anus_id_pasien, dp_anus_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$lvi', '$invasi_perineural', '$catatan_temuan_operasi', '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_hitopatologi', '$id_pasien', '$type_ill' )"); 
+        mysqli_query($conn, "INSERT INTO patologi_anus (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, lvi, invasi_perineural, catatan_temuan_operasi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histopatologi, dp_anus_id_pasien, dp_anus_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$lvi', '$invasi_perineural', '$catatan_temuan_operasi', '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_hitopatologi', '$id_pasien', '$namaLengkap' )"); 
+
+        $data = mysqli_query($conn, "SELECT id_patologi_anus FROM patologi_anus WHERE dp_anus_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_patologi_anus = $dta['id_patologi_anus'];
+        }
+
+        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_anus;
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+        $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+        $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis");
         
     } else if($button == "Update") {
-    // $id_klinis_esofaguss = $_GET['id_klinis_esofagus'];
     mysqli_query($conn, "UPDATE patologi_anus SET tumor = '$tumor',
                                                 node = '$node',
                                                 metastasis = '$metastasis',
@@ -53,13 +64,30 @@
                                                 catatan_temuan_operasi = '$catatan_temuan_operasi',
                                                 no_patologi_operasi_definitif = '$no_patologi_operasi_definitif',
                                                 jenis_patologi_operasi_definitif = '$jenis_patologi_operasi_definitif',
-                                                grade_histopatologi = '$grade_histopatologi' WHERE id_patologi_anus = '$id_patologi_anuss'");
+                                                grade_histopatologi = '$grade_histopatologi' WHERE dp_anus_id_pasien = '$id_pasien'");
+
+        $data = mysqli_query($conn, "SELECT id_patologi_anus FROM patologi_anus WHERE dp_anus_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_patologi_anus = $dta['id_patologi_anus'];
+        }
+
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_anus;
+        $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+        $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+        if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+        } else if($id_klinis && $id_patologi && $id_data_terapi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+        } else if($id_klinis && $id_patologi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi");
+        } else if($id_klinis) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi");
+        } else {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi");
+        }            
+
     }
 
-    $data = mysqli_query($conn, "SELECT id_patologi_anus FROM patologi_anus WHERE dp_anus_id_pasien = '$id_pasien'");
-    while($dta = mysqli_fetch_assoc($data)) {
-        $id_patologi_anus = $dta['id_patologi_anus'];
-    }
-
-    header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_anus=$id_patologi_anus");
 ?>

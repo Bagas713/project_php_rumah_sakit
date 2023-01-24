@@ -55,7 +55,6 @@
     $lvi = $row['lvi'];
     $invasi_perineural = $row['invasi_perineural'];
     $catatan_temuan_operasi = $row['catatan_temuan_operasi'];
-
     $button = "Update";
     }
 
