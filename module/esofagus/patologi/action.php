@@ -38,6 +38,9 @@
         }
 
         $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_esofagus;
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+        $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+        $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
         header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis");
         
@@ -66,7 +69,7 @@
         }
         
         $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
-        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_esofagus;
         $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
         $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
