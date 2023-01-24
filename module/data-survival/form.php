@@ -69,14 +69,14 @@
 
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Meninggal</label>
-                <div class="col-sm-7">
+                <div class="col-sm-10">
                 <input type="date" class="form-control" id="inputPassword3" name="tanggal_meninggal" value="<?php echo $tanggal_meninggal; ?>" >
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Rekurensi</label>
-                <div class="col-sm-7">
+                <div class="col-sm-10">
                 <input type="date" class="form-control" id="inputPassword3" name="tanggal_rekurensi" value="<?php echo $tanggal_rekurensi; ?>" >
                 </div>
             </div>

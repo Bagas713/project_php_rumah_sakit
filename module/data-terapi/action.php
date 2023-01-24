@@ -23,7 +23,7 @@
     }
 
     if($button == "Save") {
-        mysqli_query($conn, "INSERT INTO data_terapi (type_case, terapi_1, ket_terapi_1, terapi_2, ket_terapi_2, terapi_3, ket_terapi_3, terapi_4, ket_terapi_4, terapi_5, ket_terapi_5, dt_id_pasien) VALUES ('$type_ill','$terapi1', '$ketTerapi1', '$terapi2', '$ketTerapi2', '$terapi3', '$ketTerapi3', '$terapi4', '$ketTerapi4', '$terapi5', '$ketTerapi5', '$id_pasien')"); 
+        mysqli_query($conn, "INSERT INTO data_terapi (type_case, terapi_1, ket_terapi_1, terapi_2, ket_terapi_2, terapi_3, ket_terapi_3, terapi_4, ket_terapi_4, terapi_5, ket_terapi_5, dt_id_pasien, dt_nama) VALUES ('$type_ill','$terapi1', '$ketTerapi1', '$terapi2', '$ketTerapi2', '$terapi3', '$ketTerapi3', '$terapi4', '$ketTerapi4', '$terapi5', '$ketTerapi5', '$id_pasien', '$namaLengkap')"); 
 
         $data = mysqli_query($conn, "SELECT id_data_terapi FROM data_terapi WHERE dt_id_pasien = '$id_pasien'");
         while($dta = mysqli_fetch_assoc($data)) {
