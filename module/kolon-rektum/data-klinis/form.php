@@ -24,7 +24,7 @@
     $fam_history = $row['fam_history'];
     $infection_history = $row['infection_history'];
     $lokasi = $row['lokasi'];
-    $kolonoskopi = $row['kolonoskopi']
+    $kolonoskopi = $row['kolonoskopi'];
     $ct_scan = $row['ct_scan'];
     $button = "Update";
     }
@@ -43,7 +43,7 @@
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="keluhan" value="<?php echo $keluhan; ?>" >
             <option>Gangguan pola BAB</option>
-            <option>BAB berdara</option>
+            <option>BAB berdarah</option>
             <option>Nyeri</option>
             <option>Tidak Bisa BAB</option>
             <option>Penurunan BB</option>
@@ -82,9 +82,11 @@
         <label for="inputState" class="col-sm-2 col-form-label">Lokasi</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="lokasi" value="<?php echo $lokasi; ?>" >
-            <option>Atas</option>
-            <option>Tengah</option>
-            <option>Bawah</option>
+            <option>Ascendes</option>
+            <option>Transversum</option>
+            <option>Descendes</option>
+            <option>Sigmoid</option>
+            <option>Rektum</option>
           </select>
         </div>
       </div>

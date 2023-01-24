@@ -134,7 +134,7 @@
             <option>Esofagus</option>
             <option>Gaster</option>
             <option>Duodenum-Jejunum-Ileum</option>
-            <option>Kolom-Rektum</option>
+            <option>Kolon-Rektum</option>
             <option>Anus</option>
             <option>Hepatobilier</option>
             <option>Pankreas</option>
