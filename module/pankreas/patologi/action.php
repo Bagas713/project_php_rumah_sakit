@@ -25,11 +25,6 @@
     while($dta = mysqli_fetch_assoc($datas)) {
         $id_patologi_pankreass = $dta['id_patologi_pankreas'];
     }
-    // mysqli_query($conn, "INSERT INTO data_klinis_esofagus 
-    //                     (keluhan, period, fam_history, lokasi, esofagografi, endoskopi, ct_scan, dk_esofagus_id_pasien, dk_esofagus_nama)
-    //                     VALUES ('$keluhan', '$period', '$fam_history', '$lokasi', '$esofagografi',
-    //                     '$endoskopi', '$ct_scan', '$id_pasien', '$type_ill' )");
-
 
     if($button == "Save") {
         mysqli_query($conn, "INSERT INTO patologi_pankreas 
@@ -47,8 +42,54 @@
         $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
         $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
-        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis");
-
+        if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+        }
+        else if($id_klinis && $id_patologi && $id_data_terapi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi");
+        } 
+        else if($id_klinis && $id_data_terapi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+        }
+        else if($id_klinis && $id_patologi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_survival=$id_data_survival");
+        }
+        else if($id_patologi && $id_data_terapi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+        }
+        else if($id_klinis && $id_patologi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis&id_patologi=$id_patologi");
+        }
+        else if($id_klinis && $id_data_terapi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_patologi=$id_patologi");
+        }
+        else if($id_klinis && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+        }
+        else if($id_patologi && $id_data_terapi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+        }
+        else if($id_patologi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_survival=$id_data_survival");
+        }
+        else if($id_data_terapi && $id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+        }
+        else if($id_klinis) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi");
+        }
+        else if($id_patologi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi");
+        }
+        else if($id_data_terapi) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_data_terapi=$id_data_terapi&id_patologi=$id_patologi");
+        }
+        else if($id_data_survival) {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+        }
+        else {
+            header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi");
+        }
     } else if($button == "Update") {
     // $id_klinis_esofaguss = $_GET['id_klinis_esofagus'];
     mysqli_query($conn, "UPDATE patologi_pankreas SET tumor = '$tumor',
@@ -77,15 +118,52 @@
     $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
     if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
-        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
-    } else if($id_klinis && $id_patologi && $id_data_terapi) {
-        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
-    } else if($id_klinis && $id_patologi) {
-        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_panrkreas=$id_patologi_pankreas&id_klinis=$id_klinis&id_patologi=$id_patologi");
-    } else if($id_klinis) {
-        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas&id_klinis=$id_klinis");
-    } else {
-        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas");
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+    }
+    else if($id_klinis && $id_patologi && $id_data_terapi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi");
+    } 
+    else if($id_klinis && $id_data_terapi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+    }
+    else if($id_klinis && $id_patologi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_survival=$id_data_survival");
+    }
+    else if($id_patologi && $id_data_terapi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+    }
+    else if($id_klinis && $id_patologi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis&id_patologi=$id_patologi");
+    }
+    else if($id_klinis && $id_data_terapi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_patologi=$id_patologi");
+    }
+    else if($id_klinis && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+    }
+    else if($id_patologi && $id_data_terapi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+    }
+    else if($id_patologi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_survival=$id_data_survival");
+    }
+    else if($id_data_terapi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+    }
+    else if($id_klinis) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi");
+    }
+    else if($id_patologi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi");
+    }
+    else if($id_data_terapi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_data_terapi=$id_data_terapi&id_patologi=$id_patologi");
+    }
+    else if($id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_data_survival=$id_data_survival&id_patologi=$id_patologi");
+    }
+    else {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi");
     }
 
 }
