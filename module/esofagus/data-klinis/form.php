@@ -46,7 +46,25 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Klinis Esofagus</h2>
 
-    <form action="<?php echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien"; ?>" method="POST">
+    <form action="
+            <?php
+
+              if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+              } else if($id_klinis && $id_patologi && $id_data_terapi) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
+              } else if($id_klinis && $id_patologi) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi";
+              } else if($id_klinis) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis";
+              } else if($id_klinis_esofagus) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis_esofagus=$id_klinis_esofagus";
+              } else {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
+              }
+
+            ?>
+          " method="POST">
       </br>
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>

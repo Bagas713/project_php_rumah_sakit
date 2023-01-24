@@ -2,10 +2,6 @@
   
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
-  $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
-  $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
-  $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
-  $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
   if(!$id_user){
     header("location:index.php?page=user-access/login");
@@ -90,7 +86,7 @@
                 $data_klinis = mysqli_query($conn, "SELECT id_klinis_esofagus FROM data_klinis_esofagus WHERE dk_esofagus_id_pasien='$id_pasien'");
                 $row_klinis = mysqli_fetch_assoc($data_klinis);
             
-                $data_patologi = mysqli_query($conn, "SELECT id_patologi_esofagus FROM patologi_esofagus WHERE dp_espfagus_id_pasien='$id_pasien'");
+                $data_patologi = mysqli_query($conn, "SELECT id_patologi_esofagus FROM patologi_esofagus WHERE dp_esofagus_id_pasien='$id_pasien'");
                 $row_patologi = mysqli_fetch_assoc($data_patologi);
             
                 $data_terapi = mysqli_query($conn, "SELECT id_data_terapi FROM data_terapi WHERE dt_id_pasien='$id_pasien'");
@@ -257,7 +253,7 @@
  
                   ?>", 
                 >
-                  <i class="fa-regular fa-rectangle-list"></i>
+                  <i class="fa-regular fa-rectangle-list"><?php echo $id_patologi; echo $id_klinis; ?></i>
                 </a></td>
           </tr>
           <?php  
