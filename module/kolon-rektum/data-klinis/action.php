@@ -27,6 +27,16 @@
     if($button == "Save") {
         mysqli_query($conn, "INSERT INTO data_klinis_kolon (keluhan, period, fam_history, infection_history, lokasi, kolonoskopi, ct_scan, dk_kolon_id_pasien, dk_kolon_nama) 
                                             VALUES ('$keluhan', '$period', '$fam_history', '$infection_history', '$lokasi', '$kolonoskopi', '$ct_scan', '$id_pasien', '$type_ill' )"); 
+
+        $data = mysqli_query($conn, "SELECT id_klinis_kolon FROM data_klinis_kolon WHERE dk_kolon_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_klinis_esofagus = $dta['id_klinis_esofagus'];
+        }
+
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : $id_klinis_kolon;
+
+        header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon&id_klinis=$id_klinis");
+
     } else if($button == "Update") {
     // $id_klinis_esofaguss = $_GET['id_klinis_esofagus'];
     mysqli_query($conn, "UPDATE data_klinis_kolon SET keluhan = '$keluhan',
@@ -36,12 +46,28 @@
                                                 lokasi = '$lokasi',
                                                 kolonoskopi = '$kolonoskopi,
                                                 ct_scan = '$ct_scan' WHERE id_klinis_kolon = '$id_klinis_kolons'");
-    }
 
     $data = mysqli_query($conn, "SELECT id_klinis_kolon FROM data_klinis_kolon WHERE dk_kolon_id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($data)) {
         $id_klinis_kolon = $dta['id_klinis_kolon'];
     }
 
-    header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon");
+    $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : $id_klinis_kolon;
+    $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+    $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+    $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+    if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+    } else if($id_klinis && $id_patologi && $id_data_terapi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+    } else if($id_klinis && $id_patologi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon&id_klinis=$id_klinis&id_patologi=$id_patologi");
+    } else if($id_klinis) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon&id_klinis=$id_klinis");
+    } else {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_kolon=$id_klinis_kolon");
+    }
+}
+
 ?>

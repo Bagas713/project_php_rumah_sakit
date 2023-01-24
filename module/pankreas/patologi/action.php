@@ -21,7 +21,7 @@
     $catatan_temuan_operasi = $_POST['catatan_temuan_operasi'];
     $button = $_POST['button'];
 
-    $datas = mysqli_query($conn, "SELECT id_patologi_pankreas FROM patologi_pankreas WHERE dk_pankreas_id_pasien = '$id_pasien'");
+    $datas = mysqli_query($conn, "SELECT id_patologi_pankreas FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($datas)) {
         $id_patologi_pankreass = $dta['id_patologi_pankreas'];
     }
@@ -33,9 +33,21 @@
 
     if($button == "Save") {
         mysqli_query($conn, "INSERT INTO patologi_pankreas 
-                    (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histopatologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, catatan_temuan_operasi, dk_pankreas_id_pasien, dk_pankreas_nama) 
+                    (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histopatologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, catatan_temuan_operasi, dp_pankreas_id_pasien, dp_pankreas_nama) 
                     VALUES 
                     ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi', '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_histopatologi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$catatan_temuan_operasi', '$id_pasien', '$type_ill')"); 
+
+        $data = mysqli_query($conn, "SELECT id_patologi_pankreas FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_patologi_pankreas = $dta['id_patologi_pankreas'];
+        }
+
+        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_pankreas;
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+        $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+        $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis");
 
     } else if($button == "Update") {
     // $id_klinis_esofaguss = $_GET['id_klinis_esofagus'];
@@ -53,12 +65,28 @@
                                                 no_patologi_biopsi = '$no_patologi_biopsi',
                                                 jenis_patologi_biopsi = '$jenis_patologi_biopsi',
                                                 tanggal_biopsi = '$tanggal_biopsi' WHERE id_patologi_pankreas = '$id_patologi_pankreass'");
-    }
 
-    $data = mysqli_query($conn, "SELECT id_patologi_pankreas FROM patologi_pankreas WHERE dk_pankreas_id_pasien = '$id_pasien'");
+    $data = mysqli_query($conn, "SELECT id_patologi_pankreas FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($data)) {
         $id_patologi_pankreas = $dta['id_patologi_pankreas'];
     }
+    
+    $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+    $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_esofagus;
+    $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+    $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
-    header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas");
+    if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+    } else if($id_klinis && $id_patologi && $id_data_terapi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+    } else if($id_klinis && $id_patologi) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_panrkreas=$id_patologi_pankreas&id_klinis=$id_klinis&id_patologi=$id_patologi");
+    } else if($id_klinis) {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas&id_klinis=$id_klinis");
+    } else {
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_pankreas=$id_patologi_pankreas");
+    }
+
+}
 ?>

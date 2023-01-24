@@ -11,12 +11,30 @@
     $masa_hidup = $_POST['masa_hidup'];
     $button = $_POST['button'];
 
-    $datas = mysqli_query($conn, "SELECT nama_lengkap FROM data_pasien WHERE id_pasien = '$id_pasien'");
+    $datas = mysqli_query($conn, "SELECT * FROM data_pasien WHERE id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($datas)) {
         $namaLengkap = $dta['nama_lengkap'];
+        $tanggal_lahir = $dta['date_born'];
     }
-
+    $tanggal_lahir = $tanggal_lahir;
     if($button == "Save") {
+        if($ds_status == "Meninggal"){
+            function getAge($tanggal_meninggal) {
+                $tanggal_meninggall = new DateTime($tanggal_meninggal);
+                $tanggal_masa = new DateTime($tanggal_lahir);
+                $diff = $tanggal_meninggall->diff($tanggal_masa);
+                return $diff->d;
+            }
+        
+            $masa_hidup = getAge($tanggal_meninggal);
+        } else {
+            $masa_hidup = "Hidup";
+        }
+        // if(!empty($_POST['tanggal_meninggal']) && !empty($_POST['tanggal_rekurensi']));
+        // $date1 = new DateTime($_POST['tanggal_meninggal']);
+        // $date2 = new DateTime($_POST['tanggal_rekurensi']);
+        // $interval = mysqli_query($conn, "SELECT DATEDIFF (tanggal_meninggal, tanggal_rekurensi) as masa_hidup FROM data_survival");
+
         mysqli_query($conn, "INSERT INTO data_survival (ds_status, tanggal_meninggal, tanggal_rekurensi, masa_hidup, ds_id_pasien, ds_nama) 
                                             VALUES ('$ds_status', '$tanggal_meninggal', '$tanggal_rekurensi', '$masa_hidup', '$id_pasien', '$namaLengkap' )"); 
 
@@ -61,6 +79,19 @@
 
         // header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis_esofagus=$id_klinis_esofagus&id_klinis=$id_klinis");
     } else if($button == "Update") {
+        if($ds_status == "Meninggal"){
+            function getAge($tanggal_meninggal) {
+                $tanggal_meninggall = new DateTime($tanggal_meninggal);
+                $tanggal_masa = new DateTime($tanggal_lahir);
+                $diff = $tanggal_meninggall->diff($tanggal_masa);
+                return $diff->d;
+            }
+        
+            $masa_hidup = getAge($tanggal_meninggal);
+        } else {
+            $masa_hidup = "Hidup";
+        }
+        
         mysqli_query($conn, "UPDATE data_survival SET ds_status = '$ds_status',
                                                             tanggal_meninggal = '$tanggal_meninggal',
                                                             tanggal_rekurensi = '$tanggal_rekurensi',

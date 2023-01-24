@@ -5,6 +5,10 @@
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
   $id_patologi_hepatobilier = isset($_GET['id_patologi_hepatobilier']) ? $_GET['id_patologi_hepatobilier'] : false;
+  $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+  $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+  $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+  $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
   
     $tumor = "";
     $node = "";
@@ -23,9 +27,15 @@
 
     $button = "Save";
 
-  if($id_patologi_hepatobilier) {
-    $query_id = mysqli_query($conn, "SELECT * FROM patologi_hepatobilier WHERE id_patologi_hepatobilier='$id_patologi_hepatobilier'");
-    $row = mysqli_fetch_assoc($query_id);
+    if($id_patologi_hepatobilier || $id_patologi) {
+
+      if($id_patologi_hepatobilier) {
+        $query_id = mysqli_query($conn, "SELECT * FROM patologi_hepatobilier WHERE id_patologi_hepatobilier='$id_patologi_hepatobilier'");
+        $row = mysqli_fetch_assoc($query_id);
+      } else {
+        $query_id = mysqli_query($conn, "SELECT * FROM patologi_hepatobilier WHERE id_patologi_hepatobilier='$id_patologi'");
+        $row = mysqli_fetch_assoc($query_id);
+      }
 
     $tumor = $row['tumor'];
     $node = $row['node'];
@@ -92,7 +102,7 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Lokasi Mestastasis</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="lokasi_mestastasis" value="<?php echo $lokasi_mestastasis; ?>" >
+          <select id="inputState" class="form-control" name="lokasi_metastasis" value="<?php echo $lokasi_metastasis; ?>" >
             <option>Paru</option>
             <option>Hati</option>
             <option>Peritoneal</option>
@@ -119,21 +129,21 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Jenis Patologi Biopsi</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder=">Jenis Patologi Biopsi" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Jenis Patologi Biopsi" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>" >
         </div>
       </div>
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi Operasi Definitif</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder=">No. Patologi Operasi Definitif" name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Operasi Definitif" name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
         </div>
       </div>
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder=">Jenis Patologi Operasi Definitif" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Jenis Patologi Operasi Definitif" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
         </div>
       </div>
 

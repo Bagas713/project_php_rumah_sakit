@@ -5,6 +5,11 @@
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
   $id_patologi_pankreas = isset($_GET['id_patologi_pankreas']) ? $_GET['id_patologi_pankreas'] : false;
+  $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+  $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+  $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+  $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+  
   
   $tumor = "";
   $node = "";
@@ -22,9 +27,15 @@
   $catatan_temuan_operasi = "";
   $button = "Save";
 
-  if($id_patologi_pankreas) {
-    $query_id = mysqli_query($conn, "SELECT * FROM patologi_pankreas WHERE id_patologi_pankreas = '$id_patologi_pankreas'");
-    $row = mysqli_fetch_assoc($query_id);
+  if($id_patologi_pankreas || $id_patologi) {
+
+    if($id_patologi_pankreas) {
+      $query_id = mysqli_query($conn, "SELECT * FROM patologi_pankreas WHERE id_patologi_pankreas='$id_patologi_pankreas'");
+      $row = mysqli_fetch_assoc($query_id);
+    } else {
+      $query_id = mysqli_query($conn, "SELECT * FROM patologi_pankreas WHERE id_patologi_pankreas='$id_patologi'");
+      $row = mysqli_fetch_assoc($query_id);
+    }
 
     $tumor = $row['tumor'];
     $node = $row['node'];
@@ -50,7 +61,23 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Patologi Pankreas</h2>
 
-    <form action="<?php echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien"; ?>" method="POST">
+    <form action="
+    <?php
+    
+    if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+      echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+    } else if($id_klinis && $id_patologi && $id_data_terapi) {
+      echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
+    } else if($id_klinis && $id_patologi) {
+      echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi";
+    } else if($id_klinis) {
+      echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis";
+    } else {
+      echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
+    }
+
+    ?>" 
+    method="POST">
       </br>
 
       <div class="form-group row">
@@ -131,14 +158,17 @@
         </div>
       </div>
 
-      <div class="form-group row">
-        <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
-        <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
-            <option>Ductal adenocarcinoima</option>
+      <div id="textSelectdiv">
+          <select id="textSelect" class="select" style="display: inline;">
+            <option>Ductal adenocarcinoim</option>
+            <option value="customOption">Lainnya</option>
           </select>
+          <label class="form-label select-label">Jenis Patologi Operasi Definitif</label>
         </div>
-      </div>
+        <div id="inputDiv" class="form-outline disaplayInput">
+          <input type="text" id="form12" class="form-control" style="display: none;" onblur="hideInput()" disabled />
+          <label id="inputLabel" class="form-label disaplayInput" value="<?php echo $jenis_patologi_operasi_definitif; ?>" for="form12">Lainnya</label>
+        </div>
 
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Grade Histopatologi</label>
@@ -191,3 +221,39 @@
     </form>
   </div>
 </div>
+<script>
+    const mySelect = document.getElementById("textSelect");
+    const inputOther = document.getElementById("form12");
+    const labelInput = document.getElementById("inputLabel");
+    const divInput = document.getElementById("inputDiv");
+    const selectDiv = document.getElementById("textSelectdiv");
+
+    mySelect.addEventListener('optionSelect.mdb.select', function(e){
+    const SelectValue = document.getElementById('textSelect').value;
+    if (SelectValue === 'customOption') {
+    inputOther.style.display='inline';
+    inputOther.removeAttribute('disabled');
+    labelInput.classList.remove('disaplayInput');
+    divInput.classList.remove('disaplayInput');
+    selectDiv.style.display='none';
+    inputOther.focus();
+    mySelect.disabled = 'true';
+
+    } else {
+    a.style.display='none';
+    }
+    })
+
+    function hideInput(){
+    if (inputOther !== null && inputOther.value === "")
+    {
+    inputOther.style.display='none';
+    inputOther.setAttribute('disabled', '');
+    selectDiv.style.display='inline';
+    mySelect.removeAttribute('disabled');
+    labelInput.classList.add('disaplayInput');
+    divInput.classList.add('disaplayInput');
+    }
+    }
+</script>
+

@@ -37,6 +37,18 @@
     if($button == "Save") {
         mysqli_query($conn, "INSERT INTO patologi_gaster (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histapotologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, lvi, invasi_perineural, catatan_temuan_operasi, dp_gaster_id_pasien, dp_gaster_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi' , '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_histapotologi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$lvi', '$Invansi_perineural', '$catatan_temuan_operasi', '$id_pasien', '$type_ill' )"); 
         
+        $data = mysqli_query($conn, "SELECT id_patologi_gaster FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_patologi_gaster = $dta['id_patologi_gaster'];
+        }
+
+        $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_gaster;
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+        $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+        $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+        header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_klinis=$id_klinis");
+
     } else if($button == "Update") {
     // $id_klinis_esofaguss = $_GET['id_klinis_esofagus'];
     mysqli_query($conn, "UPDATE patologi_gaster SET tumor = '$tumor',
@@ -55,12 +67,29 @@
                                                 lvi = '$lvi',
                                                 invasi_perineural = '$invasi_perineural',
                                                 catatan_temuan_operasi = '$catatan_temuan_operasi' WHERE id_patologi_gaster = '$id_patologi_gasterr'");
-    }
+    
 
-    $data = mysqli_query($conn, "SELECT id_patologi_gaster FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
-    while($dta = mysqli_fetch_assoc($data)) {
-        $id_patologi_gaster = $dta['id_patologi_gaster'];
-    }
+        $data = mysqli_query($conn, "SELECT id_patologi_gaster FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($data)) {
+            $id_patologi_gaster = $dta['id_patologi_gaster'];
+        }
 
-    header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster");
+        $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+            $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : $id_patologi_gaster;
+            $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+            $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
+
+            if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+                header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival");
+            } else if($id_klinis && $id_patologi && $id_data_terapi) {
+                header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
+            } else if($id_klinis && $id_patologi) {
+                header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster&id_klinis=$id_klinis&id_patologi=$id_patologi");
+            } else if($id_klinis) {
+                header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster&id_klinis=$id_klinis");
+            } else {
+                header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster");
+            }
+
+    }
 ?>

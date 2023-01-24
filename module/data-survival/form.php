@@ -84,7 +84,7 @@
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Masa Hidup</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputPassword3" placeholder="Masa Hidup" name="masa_hidup" value="<?php echo $masa_hidup; ?>" >
+                <input type="text" class="form-control" id="inputPassword3" placeholder="Masa Hidup" name="masa_hidup" readonly value="<?php echo $masa_hidup; ?>" >
                 </div>
             </div>
 
