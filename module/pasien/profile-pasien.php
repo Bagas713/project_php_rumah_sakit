@@ -7,7 +7,7 @@
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
 
-  $data_ill = my
+  // $data_ill = my
 
   if($type_ill == "Esofagus") {
     $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
