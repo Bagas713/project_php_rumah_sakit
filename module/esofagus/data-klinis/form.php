@@ -5,6 +5,10 @@
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
   $id_klinis_esofagus = isset($_GET['id_klinis_esofagus']) ? $_GET['id_klinis_esofagus'] : false;
+  $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+  $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+  $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+  $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
   
   $keluhan = "";
   $period = "";
@@ -15,9 +19,15 @@
   $ct_scan = "";
   $button = "Save";
 
-  if($id_klinis_esofagus) {
-    $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_esofagus WHERE id_klinis_esofagus='$id_klinis_esofagus'");
-    $row = mysqli_fetch_assoc($query_id);
+  if($id_klinis_esofagus || $id_klinis) {
+
+    if($id_klinis_esofagus) {
+      $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_esofagus WHERE id_klinis_esofagus='$id_klinis_esofagus'");
+      $row = mysqli_fetch_assoc($query_id);
+    } else {
+      $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_esofagus WHERE id_klinis_esofagus='$id_klinis'");
+      $row = mysqli_fetch_assoc($query_id);
+    }
 
     $keluhan = $row['keluhan'];
     $period = $row['period'];
