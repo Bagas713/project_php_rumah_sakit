@@ -4,7 +4,7 @@
 
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
-  $id_patologi_gaster = isset($_GET['id_patologi_gaster']) ? $_GET['id_patologi_gaster'] : false;
+  $id_patologi_kolon = isset($_GET['id_patologi_kolon']) ? $_GET['id_patologi_kolon'] : false;
   
     $tumor = "";
     $node = "";
@@ -15,7 +15,7 @@
     $jenis_patologi_biopsi = "";
     $no_patologi_operasi_definitif = "";
     $jenis_patologi_operasi_definitif = "";
-    $grade_histapotologi = "";
+    $grade_histopatologi = "";
     $reseksi = "";
     $batas_reseksi_proksimal = "";
     $batas_reseksi_distal = "";
@@ -25,36 +25,36 @@
 
     $button = "Save";
 
-  if($id_patologi_gaster) {
-    $query_id = mysqli_query($conn, "SELECT * FROM patologi_gaster WHERE id_patologi_gaster='$id_patologi_gaster'");
-    $row = mysqli_fetch_assoc($query_id);
+    if($id_patologi_kolon) {
+      $query_id = mysqli_query($conn, "SELECT * FROM patologi_kolon WHERE id_patologi_kolon='$id_patologi_kolon'");
+      $row = mysqli_fetch_assoc($query_id);
 
-    $tumor = $row['tumor'];
-    $node = $row['node'];
-    $metastasis = $row['metastasis'];
-    $lokasi_metastasis = $row['lokasi_metastasis'];
-    $no_patologi_biopsi = $row['no_patologi_biopsi'];
-    $tanggal_biopsi = $row['tanggal_biopsi'];
-    $jenis_patologi_biopsi = $row['jenis_patologi_biopsi'];
-    $no_patologi_operasi_definitif = $row['no_patologi_operasi_definitif'];
-    $jenis_patologi_operasi_definitif = $row['jenis_patologi_operasi_definitif'];
-    $grade_histapotologi = $row['grade_histapotologi'];
-    $reseksi = $row['reseksi'];
-    $batas_reseksi_proksimal = $row['batas_reseksi_proksimal'];
-    $batas_reseksi_distal = $row['batas_reseksi_distal'];
-    $lvi = $row['lvi'];
-    $invasi_perineural = $row['invasi_perineural'];
-    $catatan_temuan_operasi = $row['catatan_temuan_operasi'];
+      $tumor = $row['tumor'];
+      $node = $row['node'];
+      $metastasis = $row['metastasis'];
+      $lokasi_metastasis = $row['lokasi_metastasis'];
+      $no_patologi_biopsi = $row['no_patologi_biopsi'];
+      $tanggal_biopsi = $row['tanggal_biopsi'];
+      $jenis_patologi_biopsi = $row['jenis_patologi_biopsi'];
+      $no_patologi_operasi_definitif = $row['no_patologi_operasi_definitif'];
+      $jenis_patologi_operasi_definitif = $row['jenis_patologi_operasi_definitif'];
+      $grade_histopatologi = $row['grade_histopatologi'];
+      $reseksi = $row['reseksi'];
+      $batas_reseksi_proksimal = $row['batas_reseksi_proksimal'];
+      $batas_reseksi_distal = $row['batas_reseksi_distal'];
+      $lvi = $row['lvi'];
+      $invasi_perineural = $row['invasi_perineural'];
+      $catatan_temuan_operasi = $row['catatan_temuan_operasi'];
 
-    $button = "Update";
-    }
+      $button = "Update";
+      }
 
 ?>
 
 <div class="container-content">
   <div class="containerTab" style="background:white">
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-    <h2>Patologi Gaster</h2>
+    <h2>Patologi Kolon-Rektum</h2>
 
     <form action="<?php echo BASE_URL."module/$type_ill/patologi/action.php?type_ill=$type_ill&id_pasien=$id_pasien"; ?>" method="POST">
       </br>
@@ -62,10 +62,8 @@
         <label for="inputState" class="col-sm-2 col-form-label">Tumor</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="tumor" value="<?php echo $tumor; ?>" >
-            <option>T1a</option>
-            <option>T1b</option>
-            <option>T2a</option>
-            <option>T2b</option>
+            <option>T1</option>
+            <option>T2</option>
             <option>T3</option>
             <option>T4a</option>
             <option>T4b</option>
@@ -78,10 +76,10 @@
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="node" value="<?php echo $node; ?>" >
             <option>N0</option>
-            <option>N1</option>
-            <option>N2</option>
-            <option>N3a</option>
-            <option>N3b</option>
+            <option>N1a</option>
+            <option>N1b</option>
+            <option>N2a</option>
+            <option>N2b</option>
           </select>
         </div>
       </div>
@@ -91,13 +89,15 @@
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="metastasis" value="<?php echo $metastasis; ?>" >
             <option>M0</option>
-            <option>M1</option>
+            <option>M1a</option>
+            <option>M1b</option>
+            <option>M1c</option>
           </select>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputState" class="col-sm-2 col-form-label">Lokasi Mestastasis</label>
+        <label for="inputState" class="col-sm-2 col-form-label">Lokasi Metastasis</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="lokasi_metastasis" value="<?php echo $lokasi_metastasis; ?>" >
             <option>Paru</option>
@@ -127,7 +127,6 @@
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Biopsi</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>" >
-            <option>Adenocarcinoma</option>
             <option>Squamous Cell Carcinoma</option>
             <option>Lainnya</option>
           </select>
@@ -145,7 +144,6 @@
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
-          <option>Adenocarcinoma</option>
           <option>Squamous Cell Carcinoma</option>
           <option>Lainnya</option>
           </select>
@@ -155,7 +153,7 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Grade Histopatologi</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="grade_histopatologi" value="<?php echo $grade_histapotologi; ?>" >
+          <select id="inputState" class="form-control" name="grade_histopatologi" value="<?php echo $grade_histopatologi; ?>" >
             <option>I</option>
             <option>II</option>
             <option>III</option>
@@ -189,16 +187,22 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">LVI</label>
+        <label for="inputState" class="col-sm-2 col-form-label">LVI</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="LVI" name="lvi" value="<?php echo $lvi; ?>">
+          <select id="inputState" class="form-control" name="lvi" value="<?php echo $lvi; ?>" >
+            <option>Negatif</option>
+            <option>Positif</option>
+          </select>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Invasi Perineural</label>
+        <label for="inputState" class="col-sm-2 col-form-label">Invasi Perineural </label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Invasi Perineural" name="invasi_perineural" value="<?php echo $invasi_perineural; ?>">
+          <select id="inputState" class="form-control" name="invasi_perineural" value="<?php echo $invasi_perineural; ?>" >
+          <option>Negatif</option>
+          <option>Positif</option>
+          </select>
         </div>
       </div>
 

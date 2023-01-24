@@ -14,19 +14,17 @@
     $jenis_patologi_biopsi = $_POST['jenis_patologi_biopsi'];
     $no_patologi_operasi_definitif = $_POST['no_patologi_operasi_definitif'];
     $jenis_patologi_operasi_definitif = $_POST['jenis_patologi_operasi_definitif'];
-    $grade_histapotologi = $_POST['grade_histapotologi'];
+    $grade_histopatologi = $_POST['grade_histopatologi'];
     $reseksi = $_POST['reseksi'];
     $batas_reseksi_proksimal = $_POST['batas_reseksi_proksimal'];
     $batas_reseksi_distal = $_POST['batas_reseksi_distal'];
-    $lvi = $_POST['lvi'];
-    $Invansi_perineural = $_POST['batas_reseksi_distal'];
     $catatan_temuan_operasi = $_POST['catatan_temuan_operasi'];
 
     $button = $_POST['button'];
 
-    $datas = mysqli_query($conn, "SELECT id_patologi_gaster FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
+    $datas = mysqli_query($conn, "SELECT id_patologi_hepatobilier FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($datas)) {
-        $id_patologi_gasterr = $dta['id_patologi_gaster'];
+        $id_patologi_hepatobilierr = $dta['id_patologi_hepatobilier'];
     }
     // mysqli_query($conn, "INSERT INTO data_klinis_esofagus 
     //                     (keluhan, period, fam_history, lokasi, esofagografi, endoskopi, ct_scan, dk_esofagus_id_pasien, dk_esofagus_nama)
@@ -35,11 +33,11 @@
 
 
     if($button == "Save") {
-        mysqli_query($conn, "INSERT INTO patologi_gaster (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histapotologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, lvi, invasi_perineural, catatan_temuan_operasi, dp_gaster_id_pasien, dp_gaster_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi' , '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_histapotologi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$lvi', '$Invansi_perineural', '$catatan_temuan_operasi', '$id_pasien', '$type_ill' )"); 
+        mysqli_query($conn, "INSERT INTO patologi_hepatobilier (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histopatologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, catatan_temuan_operasi, dp_hepatobilier_id_pasien, dp_hepatobilier_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi' , '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_histopatologi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$catatan_temuan_operasi', '$id_pasien', '$type_ill' )"); 
         
     } else if($button == "Update") {
     // $id_klinis_esofaguss = $_GET['id_klinis_esofagus'];
-    mysqli_query($conn, "UPDATE patologi_gaster SET tumor = '$tumor',
+    mysqli_query($conn, "UPDATE patologi_hepatobilier SET tumor = '$tumor',
                                                 node = '$node',
                                                 metastasis = '$metastasis',
                                                 lokasi_metastasis = '$lokasi_metastasis',
@@ -48,19 +46,17 @@
                                                 jenis_patologi_biopsi = '$jenis_patologi_biopsi',
                                                 no_patologi_operasi_definitif = '$no_patologi_operasi_definitif',
                                                 jenis_patologi_operasi_definitif = '$jenis_patologi_operasi_definitif',
-                                                grade_histapotologi= '$grade_histapotologi',
+                                                grade_histopatologi= '$grade_histopatologi',
                                                 reseksi = '$reseksi',
                                                 batas_reseksi_proksimal = '$batas_reseksi_proksimal',
                                                 batas_reseksi_distal = '$batas_reseksi_distal',
-                                                lvi = '$lvi',
-                                                invasi_perineural = '$invasi_perineural',
-                                                catatan_temuan_operasi = '$catatan_temuan_operasi' WHERE id_patologi_gaster = '$id_patologi_gasterr'");
+                                                catatan_temuan_operasi = '$catatan_temuan_operasi' WHERE id_patologi_hepatobilier = '$id_patologi_hepatobilierr'");
     }
 
-    $data = mysqli_query($conn, "SELECT id_patologi_gaster FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
+    $data = mysqli_query($conn, "SELECT id_patologi_hepatobilier FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($data)) {
-        $id_patologi_gaster = $dta['id_patologi_gaster'];
+        $id_patologi_hepatobilier = $dta['id_patologi_hepatobilier'];
     }
 
-    header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_gaster=$id_patologi_gaster");
+    header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi_hepatobilier=$id_patologi_hepatobilier");
 ?>
