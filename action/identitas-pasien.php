@@ -104,7 +104,7 @@
           <select id="inputState" class="form-control" name="pendidikan" value="<?php echo $pendidikan; ?>">
           <?php
               
-              $data_pendidikan = mysqli_query($conn, "SELECT pendidikan FROM data_pasien");
+              $data_pendidikan = mysqli_query($conn, "SELECT pendidikan FROM data_pasien WHERE id_pasien='$id_pasien'");
               while ($row = mysqli_fetch_array($data_pendidikan)) {
                 echo "<option selected value='".$row['pendidikan']."'>".$row['pendidikan']."</option>";
               }
@@ -126,7 +126,7 @@
           <select id="inputState" class="form-control" name="job" value="<?php echo $job; ?>">
           <?php
               
-              $data_job = mysqli_query($conn, "SELECT job FROM data_pasien");
+              $data_job = mysqli_query($conn, "SELECT job FROM data_pasien WHERE id_pasien='$id_pasien'");
               while ($row = mysqli_fetch_array($data_job)) {
                 echo "<option selected value='".$row['job']."'>".$row['job']."</option>";
               }
@@ -171,7 +171,7 @@
           <select id="inputState" class="form-control" name="type_ill" value="<?php echo $type_ill; ?>">
             <?php
               
-              $data_ill = mysqli_query($conn, "SELECT type_ill FROM data_pasien");
+              $data_ill = mysqli_query($conn, "SELECT type_ill FROM data_pasien WHERE id_pasien = '$id_pasien'");
               while ($row = mysqli_fetch_array($data_ill)) {
                 echo "<option selected value='".$row['type_ill']."'>".$row['type_ill']."</option>";
               }
