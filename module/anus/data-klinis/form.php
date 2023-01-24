@@ -5,6 +5,10 @@
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
   $id_klinis_anus = isset($_GET['id_klinis_anus']) ? $_GET['id_klinis_anus'] : false;
+  $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
+  $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
+  $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
+  $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
   
   $keluhan = "";
   $period = "";
@@ -14,9 +18,14 @@
   $ct_scan = "";
   $button = "Save";
 
-  if($id_klinis_anus) {
-    $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_anus WHERE id_klinis_anus='$id_klinis_anus'");
-    $row = mysqli_fetch_assoc($query_id);
+  if($id_klinis_anus || $id_klinis) {
+    if($id_klinis_anus) {
+      $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_anus WHERE id_klinis_anus='$id_klinis_anus'");
+      $row = mysqli_fetch_assoc($query_id);
+    } else {
+      $query_id = mysqli_query($conn, "SELECT * FROM data_klinis_anus WHERE id_klinis_anus='$id_klinis'");
+      $row = mysqli_fetch_assoc($query_id);
+    }
 
     $keluhan = $row['keluhan'];
     $period = $row['period'];
@@ -34,7 +43,21 @@
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
     <h2>Klinis Anus</h2>
 
-    <form action="<?php echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien"; ?>" method="POST">
+    <form action="
+            <?php 
+              if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+              } else if($id_klinis && $id_patologi && $id_data_terapi) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
+              } else if($id_klinis && $id_patologi) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis&id_patologi=$id_patologi";
+              } else if($id_klinis) {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien&id_klinis=$id_klinis";
+              } else {
+                echo BASE_URL."module/$type_ill/data-klinis/action.php?type_ill=$type_ill&id_pasien=$id_pasien";
+              }
+            ?>
+          " method="POST">
       </br>
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
