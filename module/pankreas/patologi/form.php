@@ -226,8 +226,9 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Biopsi</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>" >
-          <?php
+          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>"/>
+            <datalist id="all_jbiop">
+            <?php
               
               $data_jbiop = mysqli_query($conn, "SELECT jenis_patologi_biopsi FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
               while ($row = mysqli_fetch_array($data_jbiop)) {
@@ -242,30 +243,34 @@
                 }
               }
           ?>
-          </select>
+            </datalist>
         </div>
-      </div>
+      </div>
 
-       <div class="form-group row">
-          <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
-          <div class="col-sm-10">
-            <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
-
-              <option>Ductal adenocarcinoima</option>
-              <option>Lainnya</option>  
-
+<div class="form-group row">
+        <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi </br> Operasi Definitif</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>"/>
+            <datalist id="all_jbiop">
             <?php
+              
+              $data_jbiop = mysqli_query($conn, "SELECT jenis_patologi_operasi_definitif FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_jbiop)) {
+                echo "<option selected value='".$row['jenis_patologi_operasi_definitif']."'>".$row['jenis_patologi_operasi_definitif']."</option>";
+              }
 
-              // if($jenis_patologi_operasi_definitif == "Ductal adenocarcinoima") {
-              //   echo "<option selected >Ductal adenocarcinoima</option>";
-              // } else {
-              //   echo "<input placeholder='Lainnya'></input>";
-              // }
+              $all_jbiop = ["Ductal adenocarcinoima", "Lainnya"];
 
-            ?>
-            </select>
-          </div>
+              for($i=0; $i<count($all_jbiop); $i++) {
+                if($all_jbiop[$i] != $jenis_patologi_operasi_definitif) {
+                  echo "<option value='".$all_jbiop[$i]."'>".$all_jbiop[$i]."</option>";
+                }
+              }
+          ?>
+            </datalist>
         </div>
+      </div>
+
         <div id="inputDiv" class="form-outline disaplayInput">
           <input type="text" id="form12" class="form-control" style="display: none;" onblur="hideInput()" disabled />
           <label id="inputLabel" class="form-label disaplayInput" value="<?php echo $jenis_patologi_operasi_definitif; ?>" for="form12">Lainnya</label>
