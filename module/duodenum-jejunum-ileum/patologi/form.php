@@ -230,15 +230,16 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Biopsi</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>" >
-          <?php
+          <input type="text" list="all_jbiop" class="form-control" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>"/>
+            <datalist id="all_jbiop">
+            <?php
               
               $data_jbiop = mysqli_query($conn, "SELECT jenis_patologi_biopsi FROM patologi_duodenum WHERE dp_duodenum_id_pasien = '$id_pasien'");
               while ($row = mysqli_fetch_array($data_jbiop)) {
                 echo "<option selected value='".$row['jenis_patologi_biopsi']."'>".$row['jenis_patologi_biopsi']."</option>";
               }
 
-              $all_jbiop = ["Adenocarcinoma", "Carcinoid", "Lainnya"];
+              $all_jbiop = ["Adenocarcinoma", "Squamous Cell Carcinoma", "Lainnya"];
 
               for($i=0; $i<count($all_jbiop); $i++) {
                 if($all_jbiop[$i] != $jenis_patologi_biopsi) {
@@ -246,7 +247,7 @@
                 }
               }
           ?>
-          </select>
+            </datalist>
         </div>
       </div>
 
@@ -260,7 +261,8 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
+          <input type="text" list="all_jopdef" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>"/>
+          <datalist id="all_jopdef">
           <?php
               
               $data_jopdef = mysqli_query($conn, "SELECT jenis_patologi_operasi_definitif FROM patologi_duodenum WHERE dp_duodenum_id_pasien = '$id_pasien'");
@@ -268,7 +270,7 @@
                 echo "<option selected value='".$row['jenis_patologi_operasi_definitif']."'>".$row['jenis_patologi_operasi_definitif']."</option>";
               }
 
-              $all_jopdef = ["Adenocarcinoma", "Carcinoid", "Lainnya"];
+              $all_jopdef = ["Adenocarcinoma", "Squamous Cell Carcinoma", "Lainnya"];
 
               for($i=0; $i<count($all_jopdef); $i++) {
                 if($all_jopdef[$i] != $jenis_patologi_operasi_definitif) {
@@ -276,7 +278,7 @@
                 }
               }
           ?>
-          </select>
+          </datalist>
         </div>
       </div>
 
