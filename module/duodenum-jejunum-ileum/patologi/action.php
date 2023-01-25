@@ -19,7 +19,7 @@
     $batas_reseksi_proksimal = $_POST['batas_reseksi_proksimal'];
     $batas_reseksi_distal = $_POST['batas_reseksi_distal'];
     $lvi = $_POST['lvi'];
-    $invasi_perineural = $_POST['invasi_perineurals'];
+    $invasi_perineural = $_POST['invasi_perineural'];
     $catatan_temuan_operasi = $_POST['catatan_temuan_operasi'];
 
     $button = $_POST['button'];
