@@ -51,7 +51,7 @@
           <?php
             $pagination = isset($_GET["pagination"]) ? $_GET["pagination"] : 1;
             $data_perhalaman = 7;
-            $mulai_dari = ($pagination-1) * $data_perhalaman;
+            $mulai_dari = ($pagination - 1) * $data_perhalaman;
 
             $dataPagination = mysqli_query($conn, "SELECT * FROM data_pasien"); 
 
@@ -239,18 +239,54 @@
             <td><a href="
                   <?php
 
-                    if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
-                      echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival"; 
-                    } else if($id_klinis && $id_patologi && $id_data_terapi) {
-                      echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi"; 
-                    } else if($id_klinis && $id_patologi) {
-                      echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi"; 
-                    } else if($id_klinis) {
-                      echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis";
-                    } else {
-                      echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill"; 
-                    }
- 
+                      if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival"; 
+                      } 
+                      else if($id_klinis && $id_patologi && $id_data_terapi) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi"; 
+                      } 
+                      else if($id_klinis && $id_patologi && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
+                      }
+                      else if($id_klinis && $id_data_terapi && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+                      }
+                      else if($id_patologi && $id_data_terapi && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival";
+                      }
+                      else if($id_klinis && $id_data_terapi) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_terapi=$id_data_terapi";
+                      }
+                      else if($id_klinis && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_data_survival=$id_data_survival";
+                      }
+                      else if($id_patologi && $id_data_terapi) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi";
+                      }
+                      else if($id_klinis && $id_patologi) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis&id_patologi=$id_patologi"; 
+                      } 
+                      else if($id_patologi && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_survival=$id_data_survival";
+                      }
+                      else if($id_data_terapi && $id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_data_terapi=$id_data_terapi&id_data_survival=$id_data_survival"; 
+                      }
+                      else if($id_patologi) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi";
+                      }
+                      else if($id_data_terapi) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_data_terapi=$id_data_terapi";
+                      }
+                      else if($id_data_survival) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_data_survival=$id_data_survival";
+                      }
+                      else if($id_klinis) {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis";
+                      } 
+                      else {
+                        echo BASE_URL."index.php?page=profile-pasien&module=pasien&action=form-pasien&id_pasien=$id_pasien&type_ill=$type_ill"; 
+                      }
                   ?>", 
                 >
                   <i class="fa-regular fa-rectangle-list"></i>

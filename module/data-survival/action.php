@@ -17,6 +17,7 @@
         $tanggal_lahir = $dta['date_born'];
     }
     $tanggal_lahir = $tanggal_lahir;
+
     if($button == "Save") {
         if($ds_status == "Meninggal"){
             function getAge($tanggal_meninggal) {
@@ -30,6 +31,32 @@
         } else {
             $masa_hidup = "Hidup";
         }
+        // if($ds_status == "Meninggal") {
+        //     function getAge($tanggal_meninggal) {
+        //         $tanggal_meninggal = date_create($tanggal_meninggal);
+        //         $tanggal_lahir = $tanggal_lahir;
+        //         $diff = date_diff($tanggal_meninggal, $tanggal_lahir);
+                
+        //         $variabel_hari = $diff->d;
+        //         $variabel_bulan = $diff->m*30;
+        //         $variabel_tahun = $diff->y*365;
+                
+        //         $variabel_total = $variabel_hari + $variabel_bulan + $variabel_tahun;
+    
+        //         return $diff->days;
+    
+        //             // $tanggal_meninggall = new DateTime($tanggal_meninggal);
+        //             // $tanggal_masa = $tanggal_lahir;
+        //             // $diff = $tanggal_meninggall->diff($tanggal_masa);
+        //             // return $diff->d;
+        //         }
+            
+        //         $masa_hidup = getAge($tanggal_meninggal);
+    
+        //     } else {
+        //         $masa_hidup = "Hidup";
+        //     }
+    
 
         mysqli_query($conn, "INSERT INTO data_survival (ds_status, tanggal_meninggal, tanggal_rekurensi, masa_hidup, ds_id_pasien, ds_nama) 
                                             VALUES ('$ds_status', '$tanggal_meninggal', '$tanggal_rekurensi', '$masa_hidup', '$id_pasien', '$namaLengkap' )"); 
@@ -101,6 +128,34 @@
         } else {
             $masa_hidup = "Hidup";
         }
+        
+        // if($ds_status == "Meninggal") {
+        //     function getAge($tanggal_meninggal) {
+        //     $tanggal_meninggal = date_create($tanggal_meninggal);
+        //     $tanggal_lahir = date_create($tanggal_lahir);
+        //     $diff = date_diff($tanggal_meninggal, $tanggal_lahir);
+            
+        //     $variabel_hari = $diff->d;
+        //     $variabel_bulan = $diff->m*30;
+        //     $variabel_tahun = $diff->y*365;
+            
+        //     $variabel_total = $variabel_hari + $variabel_bulan + $variabel_tahun;
+
+        //     return $diff->days;
+
+        //         // $tanggal_meninggall = new DateTime($tanggal_meninggal);
+        //         // $tanggal_masa = $tanggal_lahir;
+        //         // $diff = $tanggal_meninggall->diff($tanggal_masa);
+        //         // return $diff->d;
+        //     }
+        
+        //     $masa_hidup = getAge($tanggal_meninggal);
+
+        // } else {
+        //     $masa_hidup = "Hidup";
+        // }
+
+                
         
         mysqli_query($conn, "UPDATE data_survival SET ds_status = '$ds_status',
                                                             tanggal_meninggal = '$tanggal_meninggal',

@@ -134,6 +134,30 @@
                 <input type="text" class="form-control" id="inputPassword3" placeholder="Masa Hidup" name="masa_hidup" readonly value="<?php echo $masa_hidup; ?>" >
                 </div>
             </div>
+            <?php
+                $datas = mysqli_query($conn, "SELECT * FROM data_pasien WHERE id_pasien = '$id_pasien'");
+                while($dta = mysqli_fetch_assoc($datas)) {
+                    $namaLengkap = $dta['nama_lengkap'];
+                    $tanggal_lahir = $dta['date_born'];
+                }
+                // $tanggal_lahir = $tanggal_lahir;
+                // echo $tanggal_lahir;
+                // echo $tanggal_meninggal;
+                // $var = $tanggal_meninggal->diff($tanggal_lahir);
+                // echo $var->d;
+
+                $tanggal_meninggal = date_create($tanggal_meninggal);
+                $tanggal_lahir = date_create($tanggal_lahir);
+                $diff = date_diff($tanggal_meninggal, $tanggal_lahir);
+
+                $variabel_hari = $diff->d;
+                $variabel_bulan = $diff->m*30;
+                $variabel_tahun = $diff->y*365;
+
+                $variabel_total = $variabel_hari + $variabel_bulan + $variabel_tahun;
+                // echo $variabel_total;
+                
+            ?>
 
             <div class="form-group row">
                 <div class="col-sm-10">

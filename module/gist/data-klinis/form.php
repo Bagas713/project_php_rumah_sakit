@@ -172,6 +172,13 @@
       </div>
 
       <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">MRCP</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="MRCP..." name="mrcp" value="<?php echo $mrcp; ?>">
+        </div>
+      </div>
+
+      <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">CT Scan </br> Infiltrasi Organ</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan Infiltrasi Organ..." name="ct_scan" value="<?php echo $ct_scan; ?>">

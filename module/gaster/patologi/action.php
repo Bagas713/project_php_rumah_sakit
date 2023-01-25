@@ -14,12 +14,12 @@
     $jenis_patologi_biopsi = $_POST['jenis_patologi_biopsi'];
     $no_patologi_operasi_definitif = $_POST['no_patologi_operasi_definitif'];
     $jenis_patologi_operasi_definitif = $_POST['jenis_patologi_operasi_definitif'];
-    $grade_histapotologi = $_POST['grade_histapotologi'];
+    $grade_histopatologi = $_POST['grade_histopatologi'];
     $reseksi = $_POST['reseksi'];
     $batas_reseksi_proksimal = $_POST['batas_reseksi_proksimal'];
     $batas_reseksi_distal = $_POST['batas_reseksi_distal'];
     $lvi = $_POST['lvi'];
-    $Invansi_perineural = $_POST['batas_reseksi_distal'];
+    $invasi_perineural = $_POST['invasi_perineural'];
     $catatan_temuan_operasi = $_POST['catatan_temuan_operasi'];
 
     $button = $_POST['button'];
@@ -35,7 +35,7 @@
 
 
     if($button == "Save") {
-        mysqli_query($conn, "INSERT INTO patologi_gaster (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histapotologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, lvi, invasi_perineural, catatan_temuan_operasi, dp_gaster_id_pasien, dp_gaster_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi' , '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_histapotologi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$lvi', '$Invansi_perineural', '$catatan_temuan_operasi', '$id_pasien', '$type_ill' )"); 
+        mysqli_query($conn, "INSERT INTO patologi_gaster (tumor, node, metastasis, lokasi_metastasis, no_patologi_biopsi, tanggal_biopsi, jenis_patologi_biopsi, no_patologi_operasi_definitif, jenis_patologi_operasi_definitif, grade_histopatologi, reseksi, batas_reseksi_proksimal, batas_reseksi_distal, lvi, invasi_perineural, catatan_temuan_operasi, dp_gaster_id_pasien, dp_gaster_nama) VALUES ('$tumor', '$node', '$metastasis', '$lokasi_metastasis', '$no_patologi_biopsi', '$tanggal_biopsi', '$jenis_patologi_biopsi' , '$no_patologi_operasi_definitif', '$jenis_patologi_operasi_definitif', '$grade_histopatologi', '$reseksi', '$batas_reseksi_proksimal', '$batas_reseksi_distal', '$lvi', '$invasi_perineural', '$catatan_temuan_operasi', '$id_pasien', '$type_ill' )"); 
         
         $data = mysqli_query($conn, "SELECT id_patologi_gaster FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
         while($dta = mysqli_fetch_assoc($data)) {
@@ -107,7 +107,7 @@
                                                 jenis_patologi_biopsi = '$jenis_patologi_biopsi',
                                                 no_patologi_operasi_definitif = '$no_patologi_operasi_definitif',
                                                 jenis_patologi_operasi_definitif = '$jenis_patologi_operasi_definitif',
-                                                grade_histapotologi= '$grade_histapotologi',
+                                                grade_histopatologi= '$grade_histopatologi',
                                                 reseksi = '$reseksi',
                                                 batas_reseksi_proksimal = '$batas_reseksi_proksimal',
                                                 batas_reseksi_distal = '$batas_reseksi_distal',

@@ -74,7 +74,7 @@
         else if($id_patologi && $id_data_terapi) {
             header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_terapi=$id_data_terapi");
         }
-        else if($id_patologi && $id_data_survival) {
+        else if($id_data_survival && !$id_data_terapi ) {
             header("location:".BASE_URL."index.php?page=module/$type_ill/patologi/form&id_pasien=$id_pasien&type_ill=$type_ill&id_patologi=$id_patologi&id_data_survival=$id_data_survival");
         }
         else if($id_data_terapi && $id_data_survival) {

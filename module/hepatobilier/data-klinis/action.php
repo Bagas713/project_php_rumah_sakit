@@ -156,5 +156,5 @@
         else {
             header("location:".BASE_URL."index.php?page=module/$type_ill/data-klinis/form&id_pasien=$id_pasien&type_ill=$type_ill&id_klinis=$id_klinis");
         }
-
+    }
 ?>

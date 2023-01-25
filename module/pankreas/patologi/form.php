@@ -226,7 +226,7 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Biopsi</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>"/>
+          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_biopsi" autocomplete="off"  value="<?php echo $jenis_patologi_biopsi; ?>"/>
             <datalist id="all_jbiop">
             <?php
               
@@ -245,12 +245,12 @@
           ?>
             </datalist>
         </div>
-      </div>
+</div>
 
 <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>"/>
+          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_operasi_definitif" autocomplete="off" value="<?php echo $jenis_patologi_operasi_definitif; ?>"/>
             <datalist id="all_jbiop">
             <?php
               
@@ -269,7 +269,7 @@
           ?>
             </datalist>
         </div>
-      </div>
+</div>
 
         <div id="inputDiv" class="form-outline disaplayInput">
           <input type="text" id="form12" class="form-control" style="display: none;" onblur="hideInput()" disabled />

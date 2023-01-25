@@ -15,7 +15,7 @@
     $jenis_patologi_biopsi = "";
     $no_patologi_operasi_definitif = "";
     $jenis_patologi_operasi_definitif = "";
-    $grade_histapotologi = "";
+    $grade_histopatologi = "";
     $reseksi = "";
     $batas_reseksi_proksimal = "";
     $batas_reseksi_distal = "";
@@ -25,9 +25,14 @@
 
     $button = "Save";
 
-  if($id_patologi_gaster) {
-    $query_id = mysqli_query($conn, "SELECT * FROM patologi_gaster WHERE id_patologi_gaster='$id_patologi_gaster'");
-    $row = mysqli_fetch_assoc($query_id);
+  if($id_patologi_gaster || $id_patologi) {
+    if($id_patologi_gaster) {
+      $query_id = mysqli_query($conn, "SELECT * FROM patologi_gaster WHERE id_patologi_gaster='$id_patologi_gaster'");
+      $row = mysqli_fetch_assoc($query_id);
+    } else {
+      $query_id = mysqli_query($conn, "SELECT * FROM patologi_gaster WHERE id_patologi_gaster='$id_patologi'");
+      $row = mysqli_fetch_assoc($query_id);
+    }
 
     $tumor = $row['tumor'];
     $node = $row['node'];
@@ -38,7 +43,7 @@
     $jenis_patologi_biopsi = $row['jenis_patologi_biopsi'];
     $no_patologi_operasi_definitif = $row['no_patologi_operasi_definitif'];
     $jenis_patologi_operasi_definitif = $row['jenis_patologi_operasi_definitif'];
-    $grade_histapotologi = $row['grade_histapotologi'];
+    $grade_histopatologi = $row['grade_histopatologi'];
     $reseksi = $row['reseksi'];
     $batas_reseksi_proksimal = $row['batas_reseksi_proksimal'];
     $batas_reseksi_distal = $row['batas_reseksi_distal'];

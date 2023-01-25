@@ -165,7 +165,7 @@
                 echo "<option selected value='".$row['lokasi']."'>".$row['lokasi']."</option>";
               }
 
-              $all_loc = ["Caput", "Corpus", "Caudatus"];
+              $all_loc = ["Hepar", "Gallbladder", "Intrahepatic Bile Duct", "Perihilar Bile Duct", "Distal Bile Duct"];
 
               for($i=0; $i<count($all_loc); $i++) {
                 if($all_loc[$i] != $lokasi) {

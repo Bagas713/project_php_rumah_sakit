@@ -4,7 +4,6 @@
 
   $id_pasien = isset($_GET['id_pasien']) ? $_GET['id_pasien'] : 'id not found';
   $type_ill = isset($_GET['type_ill']) ? $_GET['type_ill'] : 'type ill not found';
-  $id_klinis_esofagus = isset($_GET['id_klinis_esofagus']) ? $_GET['id_klinis_esofagus'] : false;
   $id_klinis = isset($_GET['id_klinis']) ? $_GET['id_klinis'] : false;
   $id_patologi = isset($_GET['id_patologi']) ? $_GET['id_patologi'] : false;
   $id_data_terapi = isset($_GET['id_data_terapi']) ? $_GET['id_data_terapi'] : false;
