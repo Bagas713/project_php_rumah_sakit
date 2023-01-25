@@ -107,10 +107,11 @@
                 echo "<option selected value='".$row['keluhan']."'>".$row['keluhan']."</option>";
               }
 
-              $all_keluhan = mysqli_query($conn, "SELECT keluhan FROM data_klinis_anus");
-              while($rows = mysqli_fetch_array($all_keluhan)) {
-                if($rows['keluhan'] != $keluhan) {
-                  echo "<option value='".$rows['keluhan']."'>".$rows['keluhan']."</option>";
+              $all_keluhan = ["Benjolan", "Gatal", "Discharge", "Pendarahan", "Penurunan BB"]
+
+              for($i=0; $i<count($all_keluhan); $i++) {
+                if($all_keluhan[$i] != $keluhan) {
+                  echo "<option value='".$all_keluhan[$i]."'>".$all_keluhan[$i]."</option>";
                 }
               }
 
