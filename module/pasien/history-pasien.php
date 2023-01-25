@@ -318,15 +318,23 @@
             echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$prev'><< Prev</a>";
           }
 
-          $batasAkhhirPagination = ($mulaiPagination - 1) + $batasJumlahHalaman;
+          if($total_halaman >= $batasJumlahHalaman){
+            if($pagination > $batasPosisiNomor) {
+              $mulaiPagination = $pagination - ($batasPosisiNomor - 1);
+            }
 
-          if($pagination > $batasPosisiNomor) {
-            $mulaiPagination = $pagination - ($batasPosisiNomor - 1);
+            $batasAkhhirPagination = ($mulaiPagination - 1) + $batasJumlahHalaman;
+            if($batasAkhhirPagination > $total_halaman) {
+              $batasAkhhirPagination = $total_halaman;
+            }
           }
-
+          
           for($i = $mulaiPagination; $i<=$batasAkhhirPagination; $i++) {
-            
-            echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$i'>$i</a>";
+              if($pagination == $i) {
+                echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$i'>$i</a>";
+              } else {
+                echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$i'>$i</a>";
+            }
           }
 
           if($pagination < $total_halaman) {
