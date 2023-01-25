@@ -343,7 +343,7 @@
                 echo "<option selected value='".$row['lvi']."'>".$row['lvi']."</option>";
               }
 
-              $all_lvi = ['negatif', 'positif'];
+              $all_lvi = ['Negatif', 'Positif'];
               for($i=0; $i<count($all_lvi); $i++) {
                 if($all_lvi[$i] != $lvi)
                   echo "<option value='".$all_lvi[$i]."'>".$all_lvi[$i]."</option>";
@@ -365,7 +365,7 @@
                 echo "<option selected value='".$row['invasi_perineural']."'>".$row['invasi_perineural']."</option>";
               }
 
-              $all_inv = ['negatif', 'positif'];
+              $all_inv = ['Negatif', 'Positif'];
               for($i=0; $i<count($all_inv); $i++) {
                 if($all_inv[$i] != $invasi_perineural)
                   echo "<option value='".$all_inv[$i]."'>".$all_inv[$i]."</option>";
