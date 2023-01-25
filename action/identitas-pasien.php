@@ -116,10 +116,10 @@
                 echo "<option selected value='".$row['pendidikan']."'>".$row['pendidikan']."</option>";
               }
 
-              $all_pendidikan = mysqli_query($conn, "SELECT pendidikan FROM data_pasien");
-              while($rows = mysqli_fetch_array($all_pendidikan)) {
-                if($rows['pendidikan'] != $pendidikan) {
-                  echo "<option value='".$rows['pendidikan']."'>".$rows['pendidikan']."</option>";
+              $all_pendidikan = ["SD", "SMP/SMA", "S1/S2"];
+              for($i=0; $i<count($all_pendidikan); $i++) {
+                if($all_pendidikan[$i] != $pendidikan) {
+                  echo "<option value='".$all_pendidikan[$i]."'>".$all_pendidikan[$i]."</option>";
                 }
               }
 
@@ -138,10 +138,10 @@
                 echo "<option selected value='".$row['job']."'>".$row['job']."</option>";
               }
 
-              $all_job = mysqli_query($conn, "SELECT job FROM data_pasien");
-              while($rows = mysqli_fetch_array($all_job)) {
-                if($rows['job'] != $type_job) {
-                  echo "<option value='".$rows['job']."'>".$rows['job']."</option>";
+              $all_job = ["Buruh", "Petani", "Wiraswasta", "Swasta/PNS", "Tidak Bekerja"];
+              for($i=0; $i<count($all_job); $i++) {
+                if($all_job[$i] != $job) {
+                  echo "<option value='".$all_job[$i]."'>".$all_job[$i]."</option>";
                 }
               }
 
