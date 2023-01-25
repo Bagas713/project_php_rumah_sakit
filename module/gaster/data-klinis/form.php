@@ -102,7 +102,7 @@
           " method="POST">
       </br>
       <div class="form-group row">
-        <label for="inputState" class="col-sm-2 col-form-label">Keluhan ticker</label>
+        <label for="inputState" class="col-sm-2 col-form-label">Keluhan Ticker</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="keluhan" value="<?php echo $keluhan; ?>" >
             <?php
@@ -112,27 +112,27 @@
                 echo "<option selected value='".$row['keluhan']."'>".$row['keluhan']."</option>";
               }
 
-              $all_keluhan = mysqli_query($conn, "SELECT keluhan FROM data_klinis_gaster");
-              while($rows = mysqli_fetch_array($all_keluhan)) {
-                if($rows['keluhan'] != $keluhan) {
-                  echo "<option value='".$rows['keluhan']."'>".$rows['keluhan']."</option>";
+              $all_keluhan = ["Nyeri", "Kembung", "Muntah", "BAB Hitam", "Sulit Menelan", "Penurunan BB"];
+
+              for($i=0; $i<count($all_keluhan); $i++) {
+                if($all_keluhan[$i] != $keluhan) {
+                  echo "<option value='".$all_keluhan[$i]."'>".$all_keluhan[$i]."</option>";
                 }
               }
-
-            ?>
+            ?>
           </select>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Lama keluhan</label>
-        <div class="col-sm-7">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Lama keluhan" name="period" value="<?php echo $period; ?>" >minggu
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Lama Keluhan</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Lama keluhan..." name="period" value="<?php echo $period; ?>" >minggu
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputState" class="col-sm-2 col-form-label">Riwayat keluarga</label>
+        <label for="inputState" class="col-sm-2 col-form-label">Riwayat Keluarga</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="fam_history" value="<?php echo $fam_history; ?>" > 
             <?php
@@ -142,14 +142,14 @@
                 echo "<option selected value='".$row['fam_history']."'>".$row['fam_history']."</option>";
               }
 
-              $all_fhis= mysqli_query($conn, "SELECT fam_history FROM data_klinis_gaster");
-              while($rows = mysqli_fetch_array($all_fhis)) {
-                if($rows['fam_history'] != $fam_history) {
-                  echo "<option value='".$rows['fam_history']."'>".$rows['fam_history']."</option>";
+              $all_fhis = ["Ada", "Tidak"];
+
+              for($i=0; $i<count($all_fhis); $i++) {
+                if($all_fhis[$i] != $fam_history) {
+                  echo "<option value='".$all_fhis[$i]."'>".$all_fhis[$i]."</option>";
                 }
               }
-
-            ?>
+            ?>
           </select>
         </div>
       </div>
@@ -165,14 +165,14 @@
                 echo "<option selected value='".$row['lokasi']."'>".$row['lokasi']."</option>";
               }
 
-              $all_loc = mysqli_query($conn, "SELECT lokasi FROM data_klinis_gaster");
-              while($rows = mysqli_fetch_array($all_loc)) {
-                if($rows['lokasi'] != $lokasi) {
-                  echo "<option value='".$rows['lokasi']."'>".$rows['lokasi']."</option>";
+              $all_loc = ["Kardia", "Fundus", "Korpus", "Antrum", "Pilorus"];
+
+              for($i=0; $i<count($all_loc); $i++) {
+                if($all_loc[$i] != $lokasi) {
+                  echo "<option value='".$all_loc[$i]."'>".$all_loc[$i]."</option>";
                 }
               }
-
-            ?>
+            ?>
           </select>
         </div>
       </div>
@@ -180,21 +180,21 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Upper GI Study</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Upper GI Study" name="upper_gi_status" value="<?php echo $upper_gi_status; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Upper GI Study..." name="upper_gi_status" value="<?php echo $upper_gi_status; ?>" >
         </div>
       </div>
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Endoskopi</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Endoskopi" name="endoskopi" value="<?php echo $endoskopi; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Endoskopi..." name="endoskopi" value="<?php echo $endoskopi; ?>">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">CT Scan infiltrasi organ</label>
+        <label for="inputPassword3" class="col-sm-2 col-form-label">CT Scan </br>infiltrasi organ</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ" name="ct_scan" value="<?php echo $ct_scan; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="CT Scan infiltrasi organ..." name="ct_scan" value="<?php echo $ct_scan; ?>">
         </div>
       </div>
 
