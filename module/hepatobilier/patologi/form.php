@@ -118,12 +118,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Tumor</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="tumor" value="<?php echo $tumor; ?>" >
-            <option>T1a</option>
-            <option>T1b</option>
-            <option>T2a</option>
-            <option>T2b</option>
-            <option>T3</option>
-            <option>T4</option>
+          <?php
+              
+              $data_tumor = mysqli_query($conn, "SELECT tumor FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_tumor)) {
+                echo "<option selected value='".$row['tumor']."'>".$row['tumor']."</option>";
+              }
+
+              $all_tumor = mysqli_query($conn, "SELECT tumor FROM patologi_hepatobilier");
+              while($rows = mysqli_fetch_array($all_tumor)) {
+                if($rows['tumor'] != $tumor) {
+                  echo "<option value='".$rows['tumor']."'>".$rows['tumor']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -132,9 +141,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Node</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="node" value="<?php echo $node; ?>" >
-            <option>N0</option>
-            <option>N1</option>
-            <option>N2</option>
+          <?php
+              
+              $data_node = mysqli_query($conn, "SELECT node FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_node)) {
+                echo "<option selected value='".$row['node']."'>".$row['node']."</option>";
+              }
+
+              $all_node = mysqli_query($conn, "SELECT node FROM patologi_hepatobilier");
+              while($rows = mysqli_fetch_array($all_node)) {
+                if($rows['node'] != $node) {
+                  echo "<option value='".$rows['node']."'>".$rows['node']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -143,8 +164,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Metastasis</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="metastasis" value="<?php echo $metastasis; ?>" >
-            <option>M0</option>
-            <option>M1</option>
+          <?php
+              
+              $data_meta = mysqli_query($conn, "SELECT metastasis FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_meta)) {
+                echo "<option selected value='".$row['metastasis']."'>".$row['metastasis']."</option>";
+              }
+
+              $all_meta = mysqli_query($conn, "SELECT metastasis FROM patologi_hepatobilier");
+              while($rows = mysqli_fetch_array($all_meta)) {
+                if($rows['metastasis'] != $metastasis) {
+                  echo "<option value='".$rows['metastasis']."'>".$rows['metastasis']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -153,11 +187,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Lokasi Mestastasis</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="lokasi_metastasis" value="<?php echo $lokasi_metastasis; ?>" >
-            <option>Paru</option>
-            <option>Hati</option>
-            <option>Peritoneal</option>
-            <option>Otak</option>
-            <option>Tulang</option>
+          <?php
+              
+              $data_locmeta = mysqli_query($conn, "SELECT lokasi_metastasis FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_locmeta)) {
+                echo "<option selected value='".$row['lokasi_metastasis']."'>".$row['lokasi_metastasis']."</option>";
+              }
+
+              $all_locmeta = mysqli_query($conn, "SELECT lokasi_metastasis FROM patologi_hepatobilier");
+              while($rows = mysqli_fetch_array($all_locmeta)) {
+                if($rows['lokasi_metastasis'] != $lokasi_metastasis) {
+                  echo "<option value='".$rows['lokasi_metastasis']."'>".$rows['lokasi_metastasis']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -201,9 +245,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Grade Histopatologi</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="grade_histopatologi" value="<?php echo $grade_histopatologi; ?>" >
-            <option>I</option>
-            <option>II</option>
-            <option>III</option>
+          <?php
+              
+              $data_grade = mysqli_query($conn, "SELECT grade_histopatologi FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_grade)) {
+                echo "<option selected value='".$row['grade_histopatologi']."'>".$row['grade_histopatologi']."</option>";
+              }
+
+              $all_grade = mysqli_query($conn, "SELECT grade_histopatologi FROM patologi_hepatobilier");
+              while($rows = mysqli_fetch_array($all_grade)) {
+                if($rows['grade_histopatologi'] != $grade_histopatologi) {
+                  echo "<option value='".$rows['grade_histopatologi']."'>".$rows['grade_histopatologi']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
@@ -212,9 +268,21 @@
         <label for="inputState" class="col-sm-2 col-form-label">Reseksi</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="reseksi" value="<?php echo $reseksi; ?>" >
-            <option>R0</option>
-            <option>R1</option>
-            <option>R2</option>
+          <?php
+              
+              $data_reseksi = mysqli_query($conn, "SELECT reseksi FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+              while ($row = mysqli_fetch_array($data_reseksi)) {
+                echo "<option selected value='".$row['reseksi']."'>".$row['reseksi']."</option>";
+              }
+
+              $all_reseksi = mysqli_query($conn, "SELECT reseksi FROM patologi_hepatobilier");
+              while($rows = mysqli_fetch_array($all_reseksi)) {
+                if($rows['reseksi'] != $reseksi) {
+                  echo "<option value='".$rows['reseksi']."'>".$rows['reseksi']."</option>";
+                }
+              }
+
+            ?>
           </select>
         </div>
       </div>
