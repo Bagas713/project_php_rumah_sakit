@@ -102,10 +102,10 @@
                             echo "<option selected value='".$row['ds_status']."'>".$row['ds_status']."</option>";
                         }
 
-                        $all_alv = mysqli_query($conn, "SELECT ds_status FROM data_survival");
-                        while($rows = mysqli_fetch_array($all_alv)) {
-                            if($rows['ds_status'] != $ds_status) {
-                            echo "<option value='".$rows['ds_status']."'>".$rows['ds_status']."</option>";
+                        $all_alv = ['Hidup', 'Meninggal'];
+                        for($i=0; $i<count($all_alv); $i++) {
+                            if($all_alv[$i] != $ds_status) {
+                                echo "<option value='".$all_alv[$i]."'>".$all_alv[$i]."</option>";
                             }
                         }
 

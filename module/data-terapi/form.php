@@ -114,10 +114,10 @@
                 echo "<option selected value='".$row['terapi_1']."'>".$row['terapi_1']."</option>";
               }
 
-              $all_thr1 = mysqli_query($conn, "SELECT terapi_1 FROM data_terapi");
-              while($rows = mysqli_fetch_array($all_thr1)) {
-                if($rows['terapi_1'] != $terapi1) {
-                  echo "<option value='".$rows['terapi_1']."'>".$rows['terapi_1']."</option>";
+              $all_thr1 = ['Operasi', 'Kemoterapi', 'Radioterapi', 'Suportif'];
+              for($i=0; $i<count($all_thr1); $i++) {
+                if($all_thr1[$i] != $terapi1) {
+                  echo "<option value='".$all_thr1[$i]."'>".$all_thr1[$i]."</option>";
                 }
               }
 
@@ -143,10 +143,10 @@
                 echo "<option selected value='".$row['terapi_2']."'>".$row['terapi_2']."</option>";
               }
 
-              $all_thr2 = mysqli_query($conn, "SELECT terapi_2 FROM data_terapi");
-              while($rows = mysqli_fetch_array($all_thr2)) {
-                if($rows['terapi_2'] != $terapi2) {
-                  echo "<option value='".$rows['terapi_2']."'>".$rows['terapi_2']."</option>";
+              $all_thr2 = ['Operasi', 'Kemoterapi', 'Radioterapi', 'Suportif'];
+              for($i=0; $i<count($all_thr2); $i++) {
+                if($all_thr2[$i] != $terapi2) {
+                  echo "<option value='".$all_thr2[$i]."'>".$all_thr2[$i]."</option>";
                 }
               }
 
@@ -172,10 +172,10 @@
                 echo "<option selected value='".$row['terapi_3']."'>".$row['terapi_3']."</option>";
               }
 
-              $all_thr3 = mysqli_query($conn, "SELECT terapi_3 FROM data_terapi");
-              while($rows = mysqli_fetch_array($all_thr3)) {
-                if($rows['terapi_3'] != $terapi3) {
-                  echo "<option value='".$rows['terapi_3']."'>".$rows['terapi_3']."</option>";
+              $all_thr3 = ['Operasi', 'Kemoterapi', 'Radioterapi', 'Suportif'];
+              for($i=0; $i<count($all_thr3); $i++) {
+                if($all_thr3[$i] != $terapi3) {
+                  echo "<option value='".$all_thr3[$i]."'>".$all_thr3[$i]."</option>";
                 }
               }
 
@@ -201,10 +201,10 @@
                 echo "<option selected value='".$row['terapi_4']."'>".$row['terapi_4']."</option>";
               }
 
-              $all_thr4 = mysqli_query($conn, "SELECT terapi_4 FROM data_terapi");
-              while($rows = mysqli_fetch_array($all_thr4)) {
-                if($rows['terapi_4'] != $terapi4) {
-                  echo "<option value='".$rows['terapi_4']."'>".$rows['terapi_4']."</option>";
+              $all_thr4 = ['Operasi', 'Kemoterapi', 'Radioterapi', 'Suportif'];
+              for($i=0; $i<count($all_thr4); $i++) {
+                if($all_thr4[$i] != $terapi4) {
+                  echo "<option value='".$all_thr4[$i]."'>".$all_thr4[$i]."</option>";
                 }
               }
 
@@ -230,10 +230,10 @@
                 echo "<option selected value='".$row['terapi_5']."'>".$row['terapi_5']."</option>";
               }
 
-              $all_thr5 = mysqli_query($conn, "SELECT terapi_5 FROM data_terapi");
-              while($rows = mysqli_fetch_array($all_thr5)) {
-                if($rows['terapi_5'] != $terapi5) {
-                  echo "<option value='".$rows['terapi_5']."'>".$rows['terapi_5']."</option>";
+              $all_thr5 = ['Operasi', 'Kemoterapi', 'Radioterapi', 'Suportif'];
+              for($i=0; $i<count($all_thr5); $i++) {
+                if($all_thr5[$i] != $terapi5) {
+                  echo "<option value='".$all_thr5[$i]."'>".$all_thr5[$i]."</option>";
                 }
               }
 
