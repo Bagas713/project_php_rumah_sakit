@@ -129,14 +129,15 @@
                 echo "<option selected value='".$row['tumor']."'>".$row['tumor']."</option>";
               }
 
-              $all_tumor = mysqli_query($conn, "SELECT tumor FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_tumor)) {
-                if($rows['tumor'] != $tumor) {
-                  echo "<option value='".$rows['tumor']."'>".$rows['tumor']."</option>";
+              $all_tumor = ["T1", "T2", "T3", "T4a", "T4b"];
+
+              for($i=0; $i<count($all_tumor); $i++) {
+                if($all_tumor[$i] != $tumor) {
+                  echo "<option value='".$all_tumor[$i]."'>".$all_tumor[$i]."</option>";
                 }
               }
-
-            ?>
+            
+          ?>
           </select>
         </div>
       </div>
@@ -152,14 +153,14 @@
                 echo "<option selected value='".$row['node']."'>".$row['node']."</option>";
               }
 
-              $all_node = mysqli_query($conn, "SELECT node FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_node)) {
-                if($rows['node'] != $node) {
-                  echo "<option value='".$rows['node']."'>".$rows['node']."</option>";
+              $all_node = ["N0", "N1a", "N1b", "N2a", "N2b"];
+
+              for($i=0; $i<count($all_node); $i++) {
+                if($all_node[$i] != $node) {
+                  echo "<option value='".$all_node[$i]."'>".$all_node[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -175,14 +176,14 @@
                 echo "<option selected value='".$row['metastasis']."'>".$row['metastasis']."</option>";
               }
 
-              $all_meta = mysqli_query($conn, "SELECT metastasis FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_meta)) {
-                if($rows['metastasis'] != $metastasis) {
-                  echo "<option value='".$rows['metastasis']."'>".$rows['metastasis']."</option>";
+              $all_meta = ["M0", "M1a", "M1b", "M1c"];
+
+              for($i=0; $i<count($all_meta); $i++) {
+                if($all_meta[$i] != $metastasis) {
+                  echo "<option value='".$all_meta[$i]."'>".$all_meta[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -198,22 +199,22 @@
                 echo "<option selected value='".$row['lokasi_metastasis']."'>".$row['lokasi_metastasis']."</option>";
               }
 
-              $all_locmeta = mysqli_query($conn, "SELECT lokasi_metastasis FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_locmeta)) {
-                if($rows['lokasi_metastasis'] != $lokasi_metastasis) {
-                  echo "<option value='".$rows['lokasi_metastasis']."'>".$rows['lokasi_metastasis']."</option>";
+              $all_locmeta = ["Paru", "Hati", "Peritoneal", "Otak", "Tulang"];
+
+              for($i=0; $i<count($all_locmeta); $i++) {
+                if($all_locmeta[$i] != $lokasi_metastasis) {
+                  echo "<option value='".$all_locmeta[$i]."'>".$all_locmeta[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi Biopsi</label>
-        <div class="col-sm-7">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Biopsi" name="no_patologi_biopsi" value="<?php echo $no_patologi_biopsi; ?>" >minggu
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Biopsi..." name="no_patologi_biopsi" value="<?php echo $no_patologi_biopsi; ?>" >minggu
         </div>
       </div>
 
@@ -235,27 +236,27 @@
                 echo "<option selected value='".$row['jenis_patologi_biopsi']."'>".$row['jenis_patologi_biopsi']."</option>";
               }
 
-              $all_jbiop = mysqli_query($conn, "SELECT jenis_patologi_biopsi FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_jbiop)) {
-                if($rows['jenis_patologi_biopsi'] != $jenis_patologi_biopsi) {
-                  echo "<option value='".$rows['jenis_patologi_biopsi']."'>".$rows['jenis_patologi_biopsi']."</option>";
+              $all_jbiop = ["Squamous Cell Carcinoma", "Lainnya"];
+
+              for($i=0; $i<count($all_jbiop); $i++) {
+                if($all_jbiop[$i] != $jenis_patologi_biopsi) {
+                  echo "<option value='".$all_jbiop[$i]."'>".$all_jbiop[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi Operasi Definitif</label>
+        <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder=">No. Patologi Operasi Definitif" name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Operasi Definitif..." name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
+        <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
           <?php
@@ -265,14 +266,14 @@
                 echo "<option selected value='".$row['jenis_patologi_operasi_definitif']."'>".$row['jenis_patologi_operasi_definitif']."</option>";
               }
 
-              $all_jopdef = mysqli_query($conn, "SELECT jenis_patologi_operasi_definitif FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_jopdef)) {
-                if($rows['jenis_patologi_operasi_definitif'] != $jenis_patologi_operasi_definitif) {
-                  echo "<option value='".$rows['jenis_patologi_operasi_definitif']."'>".$rows['jenis_patologi_operasi_definitif']."</option>";
+              $all_jopdef = ["Squamous Cell Carcinoma", "Lainnya"];
+
+              for($i=0; $i<count($all_jopdef); $i++) {
+                if($all_jopdef[$i] != $jenis_patologi_operasi_definitif) {
+                  echo "<option value='".$all_jopdef[$i]."'>".$all_jopdef[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -288,14 +289,14 @@
                 echo "<option selected value='".$row['grade_histopatologi']."'>".$row['grade_histopatologi']."</option>";
               }
 
-              $all_grade = mysqli_query($conn, "SELECT grade_histopatologi FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_grade)) {
-                if($rows['grade_histopatologi'] != $grade_histopatologi) {
-                  echo "<option value='".$rows['grade_histopatologi']."'>".$rows['grade_histopatologi']."</option>";
+              $all_grade = ["I", "II", "III"];
+
+              for($i=0; $i<count($all_grade); $i++) {
+                if($all_grade[$i] != $grade_histopatologi) {
+                  echo "<option value='".$all_grade[$i]."'>".$all_grade[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -311,14 +312,14 @@
                 echo "<option selected value='".$row['reseksi']."'>".$row['reseksi']."</option>";
               }
 
-              $all_reseksi = mysqli_query($conn, "SELECT reseksi FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_reseksi)) {
-                if($rows['reseksi'] != $reseksi) {
-                  echo "<option value='".$rows['reseksi']."'>".$rows['reseksi']."</option>";
+              $all_reseksi = ["R0", "R1", "R2"];
+
+              for($i=0; $i<count($all_reseksi); $i++) {
+                if($all_reseksi[$i] != $reseksi) {
+                  echo "<option value='".$all_reseksi[$i]."'>".$all_reseksi[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -326,14 +327,14 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Batas Reseksi Proksimal</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Proksimal" name="batas_reseksi_proksimal" value="<?php echo $batas_reseksi_proksimal; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Proksimal..." name="batas_reseksi_proksimal" value="<?php echo $batas_reseksi_proksimal; ?>">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Batas Reseksi Distal</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Distal" name="batas_reseksi_distal" value="<?php echo $batas_reseksi_distal; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Distal..." name="batas_reseksi_distal" value="<?php echo $batas_reseksi_distal; ?>">
         </div>
       </div>
 
@@ -348,14 +349,14 @@
                 echo "<option selected value='".$row['lvi']."'>".$row['lvi']."</option>";
               }
 
-              $all_lvi = mysqli_query($conn, "SELECT lvi FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_lvi)) {
-                if($rows['lvi'] != $lvi) {
-                  echo "<option value='".$rows['lvi']."'>".$rows['lvi']."</option>";
+              $all_lvi = ["Negatif", "Positif"];
+
+              for($i=0; $i<count($all_lvi); $i++) {
+                if($all_lvi[$i] != $lvi) {
+                  echo "<option value='".$all_lvi[$i]."'>".$all_lvi[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -371,14 +372,14 @@
                 echo "<option selected value='".$row['invasi_perineural']."'>".$row['invasi_perineural']."</option>";
               }
 
-              $all_inv = mysqli_query($conn, "SELECT invasi_perineural FROM patologi_kolon");
-              while($rows = mysqli_fetch_array($all_inv)) {
-                if($rows['lvinvasi_perineurali'] != $invasi_perineural) {
-                  echo "<option value='".$rows['invasi_perineural']."'>".$rows['invasi_perineural']."</option>";
+              $all_inv = ["Negatif", "Positif"];
+
+              for($i=0; $i<count($all_inv); $i++) {
+                if($all_inv[$i] != $invasi_perineural) {
+                  echo "<option value='".$all_inv[$i]."'>".$all_inv[$i]."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -386,7 +387,7 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Catatan Temuan Operasi</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Catatan Temuan Operasi" name="catatan_temuan_operasi" value="<?php echo $catatan_temuan_operasi; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Catatan Temuan Operasi..." name="catatan_temuan_operasi" value="<?php echo $catatan_temuan_operasi; ?>">
         </div>
       </div>
 
