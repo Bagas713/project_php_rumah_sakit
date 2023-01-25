@@ -127,11 +127,14 @@
                 echo "<option selected value='".$row['tumor']."'>".$row['tumor']."</option>";
               }
 
-              $all_tumor = ["T1", "T2", "T3", "T4"];
+              $all_tumor = ["T1", "T2", "T3", "T4", "T4"];
+
               for($i=0; $i<count($all_tumor); $i++) {
-                if($all_tumor[$i] != $tumor)
+                if($all_tumor[$i] != $tumor) {
                   echo "<option value='".$all_tumor[$i]."'>".$all_tumor[$i]."</option>";
+                }
               }
+            
           ?>
           </select>
         </div>
@@ -205,8 +208,8 @@
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi Biopsi</label>
-        <div class="col-sm-7">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Biopsi" name="no_patologi_biopsi" value="<?php echo $no_patologi_biopsi; ?>" >minggu
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Biopsi..." name="no_patologi_biopsi" value="<?php echo $no_patologi_biopsi; ?>" >minggu
         </div>
       </div>
 
@@ -228,10 +231,12 @@
                 echo "<option selected value='".$row['jenis_patologi_biopsi']."'>".$row['jenis_patologi_biopsi']."</option>";
               }
 
-              $all_jbiop = ['Squamous', 'cell', 'carcinoma'];
+              $all_jbiop = ["Squamous Cell Carcinoma", "Lainnya"];
+
               for($i=0; $i<count($all_jbiop); $i++) {
-                if($all_jbiop[$i] != $jenis_patologi_biopsi)
+                if($all_jbiop[$i] != $jenis_patologi_biopsi) {
                   echo "<option value='".$all_jbiop[$i]."'>".$all_jbiop[$i]."</option>";
+                }
               }
           ?>
           </select>
@@ -239,14 +244,14 @@
       </div>
 
       <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi Operasi Definitif</label>
+        <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Operasi Definitif" name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Operasi Definitif..." name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
+        <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
           <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
           <?php
@@ -256,12 +261,13 @@
                 echo "<option selected value='".$row['jenis_patologi_operasi_definitif']."'>".$row['jenis_patologi_operasi_definitif']."</option>";
               }
 
-              $all_jopdef = ['Adenocarcinoma', 'Mucinousadenocarcinoma', 'Signet-ring cell carcinoma'];
-              for($i=0; $i<count($all_jopdef); $i++) {
-                if($all_jopdef[$i] != $jenis_patologi_operasi_definitif)
-                  echo "<option value='".$all_jopdef[$i]."'>".$all_jopdef[$i]."</option>";
-              }
+              $all_jopdef = ["Adenocarcinoma", "Mucinos Adenocarcinoma", "Signet-Ring Cell Carcinoma", "Lainnya"];
 
+              for($i=0; $i<count($all_jopdef); $i++) {
+                if($all_jopdef[$i] != $jenis_patologi_operasi_definitif) {
+                  echo "<option value='".$all_jopdef[$i]."'>".$all_jopdef[$i]."</option>";
+                }
+              }
           ?>
           </select>
         </div>
@@ -313,14 +319,14 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Batas Reseksi Proksimal</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Proksimal" name="batas_reseksi_proksimal" value="<?php echo $batas_reseksi_proksimal; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Proksimal..." name="batas_reseksi_proksimal" value="<?php echo $batas_reseksi_proksimal; ?>">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Batas Reseksi Distal</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Distal" name="batas_reseksi_distal" value="<?php echo $batas_reseksi_distal; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Distal..." name="batas_reseksi_distal" value="<?php echo $batas_reseksi_distal; ?>">
         </div>
       </div>
 
@@ -371,7 +377,7 @@
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Catatan Temuan Operasi</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Catatan Temuan Operasi" name="catatan_temuan_operasi" value="<?php echo $catatan_temuan_operasi; ?>">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Catatan Temuan Operasi..." name="catatan_temuan_operasi" value="<?php echo $catatan_temuan_operasi; ?>">
         </div>
       </div>
 
