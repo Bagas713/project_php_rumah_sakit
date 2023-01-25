@@ -113,7 +113,7 @@
                 }
               }
 
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -142,8 +142,7 @@
                   echo "<option value='".$rows['fam_history']."'>".$rows['fam_history']."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
@@ -165,8 +164,7 @@
                   echo "<option value='".$rows['lokasi']."'>".$rows['lokasi']."</option>";
                 }
               }
-
-            ?>
+          ?>
           </select>
         </div>
       </div>
