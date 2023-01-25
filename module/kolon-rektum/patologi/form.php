@@ -228,8 +228,9 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Biopsi</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>" >
-          <?php
+          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_biopsi" value="<?php echo $jenis_patologi_biopsi; ?>"/>
+            <datalist id="all_jbiop">
+            <?php
               
               $data_jbiop = mysqli_query($conn, "SELECT jenis_patologi_biopsi FROM patologi_kolon WHERE dp_kolon_id_pasien = '$id_pasien'");
               while ($row = mysqli_fetch_array($data_jbiop)) {
@@ -244,7 +245,7 @@
                 }
               }
           ?>
-          </select>
+            </datalist>
         </div>
       </div>
 
@@ -258,8 +259,9 @@
       <div class="form-group row">
         <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi </br> Operasi Definitif</label>
         <div class="col-sm-10">
-          <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
-          <?php
+          <input type="text" class="form-control" list="all_jbiop" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
+            <datalist id="all_jopdef">
+            <?php
               
               $data_jopdef = mysqli_query($conn, "SELECT jenis_patologi_operasi_definitif FROM patologi_kolon WHERE dp_kolon_id_pasien = '$id_pasien'");
               while ($row = mysqli_fetch_array($data_jopdef)) {
@@ -274,7 +276,7 @@
                 }
               }
           ?>
-          </select>
+            </datalist>
         </div>
       </div>
 
