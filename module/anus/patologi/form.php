@@ -152,12 +152,11 @@
               }
 
               $all_node = ["N0", "N1", "N2", "N3"];
-
               for($i=0; $i<count($all_node); $i++) {
-                if($all_node[$i] != $node) {
+                if($all_node[$i] != $node)
                   echo "<option value='".$all_node[$i]."'>".$all_node[$i]."</option>";
-                }
               }
+
           ?>
           </select>
         </div>
@@ -175,12 +174,11 @@
               }
 
               $all_meta = ["M0", "M1"];
-
               for($i=0; $i<count($all_meta); $i++) {
-                if($all_meta[$i] != $metastasis) {
+                if($all_meta[$i] != $metastasis)
                   echo "<option value='".$all_meta[$i]."'>".$all_meta[$i]."</option>";
-                }
               }
+
           ?>
           </select>
         </div>
@@ -197,13 +195,12 @@
                 echo "<option selected value='".$row['lokasi_metastasis']."'>".$row['lokasi_metastasis']."</option>";
               }
 
-              $all_locmeta = ["Paru", "Hati", "Peritoneal", "Otak", "Tulang"];
-
+              $all_locmeta = ['Paru','Hati','Peritoneal','Otak','Tulang'];
               for($i=0; $i<count($all_locmeta); $i++) {
-                if($all_locmeta[$i] != $lokasi_metastasis) {
+                if($all_locmeta[$i] != $lokasi_metastasis)
                   echo "<option value='".$all_locmeta[$i]."'>".$all_locmeta[$i]."</option>";
-                }
               }
+
           ?>
           </select>
         </div>
@@ -287,14 +284,12 @@
                 echo "<option selected value='".$row['grade_histopatologi']."'>".$row['grade_histopatologi']."</option>";
               }
 
-              $all_grade = ["I", "II", "III"];
-
+              $all_grade = ['I', 'II', 'III'];
               for($i=0; $i<count($all_grade); $i++) {
-                if($all_grade[$i] != $grade_histopatologi) {
+                if($all_grade[$i] != $grade_histopatologi)
                   echo "<option value='".$all_grade[$i]."'>".$all_grade[$i]."</option>";
-                }
               }
-          ?>
+            ?>
           </select>
         </div>
       </div>
@@ -310,13 +305,12 @@
                 echo "<option selected value='".$row['reseksi']."'>".$row['reseksi']."</option>";
               }
 
-              $all_reseksi = ["R0", "R1", "R2"];
-
+              $all_reseksi = ['R0', 'R1', 'R2'];
               for($i=0; $i<count($all_reseksi); $i++) {
-                if($all_reseksi[$i] != $reseksi) {
+                if($all_reseksi[$i] != $reseksi)
                   echo "<option value='".$all_reseksi[$i]."'>".$all_reseksi[$i]."</option>";
-                }
               }
+
           ?>
           </select>
         </div>
@@ -347,13 +341,12 @@
                 echo "<option selected value='".$row['lvi']."'>".$row['lvi']."</option>";
               }
 
-              $all_lvi = ["Negatif", "Positif"];
-
+              $all_lvi = ['negatif', 'positif'];
               for($i=0; $i<count($all_lvi); $i++) {
-                if($all_lvi[$i] != $lvi) {
+                if($all_lvi[$i] != $lvi)
                   echo "<option value='".$all_lvi[$i]."'>".$all_lvi[$i]."</option>";
-                }
               }
+
           ?>
           </select>
         </div>
@@ -370,13 +363,12 @@
                 echo "<option selected value='".$row['invasi_perineural']."'>".$row['invasi_perineural']."</option>";
               }
 
-              $all_inv = ["Negatif", "Positif"];
-
+              $all_inv = ['negatif', 'positif'];
               for($i=0; $i<count($all_inv); $i++) {
-                if($all_inv[$i] != $invasi_perineural) {
+                if($all_inv[$i] != $invasi_perineural)
                   echo "<option value='".$all_inv[$i]."'>".$all_inv[$i]."</option>";
-                }
               }
+
           ?>
           </select>
         </div>
