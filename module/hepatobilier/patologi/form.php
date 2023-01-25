@@ -210,8 +210,8 @@
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">No. Patologi Biopsi</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Biopsi..." name="no_patologi_biopsi" value="<?php echo $no_patologi_biopsi; ?>" >minggu
+        <div class="col-sm-7">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="No. Patologi Biopsi..." name="no_patologi_biopsi" value="<?php echo $no_patologi_biopsi; ?>" >Minggu
         </div>
       </div>
 

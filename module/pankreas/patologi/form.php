@@ -234,7 +234,7 @@
                 echo "<option selected value='".$row['jenis_patologi_biopsi']."'>".$row['jenis_patologi_biopsi']."</option>";
               }
 
-              $all_jbiop = ["Ductal Adenocarcinoima", "Lainnya"];
+              $all_jbiop = ["Ductal adenocarcinoima", "Lainnya"];
 
               for($i=0; $i<count($all_jbiop); $i++) {
                 if($all_jbiop[$i] != $jenis_patologi_biopsi) {
@@ -246,32 +246,25 @@
         </div>
       </div>
 
-      <div class="form-group row">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">No Patologi </br> Operasi Definitif</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Nomor Patologi Operasi Definitif" name="no_patologi_operasi_definitif" value="<?php echo $no_patologi_operasi_definitif; ?>" >
-        </div>
-      </div>
+       <div class="form-group row">
+          <label for="inputState" class="col-sm-2 col-form-label">Jenis Patologi Operasi Definitif</label>
+          <div class="col-sm-10">
+            <select id="inputState" class="form-control" name="jenis_patologi_operasi_definitif" value="<?php echo $jenis_patologi_operasi_definitif; ?>" >
 
-      <div id="textSelectdiv">
-          <select id="textSelect" class="select" style="display: inline;">
-          <?php
-              
-              $data_jopdef = mysqli_query($conn, "SELECT jenis_patologi_operasi_definitif FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
-              while ($row = mysqli_fetch_array($data_jopdef)) {
-                echo "<option selected value='".$row['jenis_patologi_operasi_definitif']."'>".$row['jenis_patologi_operasi_definitif']."</option>";
-              }
+              <option>Ductal adenocarcinoima</option>
+              <option>Lainnya</option>  
 
-              $all_jopdef = mysqli_query($conn, "SELECT jenis_patologi_operasi_definitif FROM patologi_pankreas");
-              while($rows = mysqli_fetch_array($all_jopdef)) {
-                if($rows['jenis_patologi_operasi_definitif'] != $jenis_patologi_operasi_definitif) {
-                  echo "<option value='".$rows['jenis_patologi_operasi_definitif']."'>".$rows['jenis_patologi_operasi_definitif']."</option>";
-                }
-              }
+            <?php
 
-            ?>
-          </select>
-          <label class="form-label select-label">Jenis Patologi Operasi Definitif</label>
+              // if($jenis_patologi_operasi_definitif == "Ductal adenocarcinoima") {
+              //   echo "<option selected >Ductal adenocarcinoima</option>";
+              // } else {
+              //   echo "<input placeholder='Lainnya'></input>";
+              // }
+
+            ?>
+            </select>
+          </div>
         </div>
         <div id="inputDiv" class="form-outline disaplayInput">
           <input type="text" id="form12" class="form-control" style="display: none;" onblur="hideInput()" disabled />
@@ -326,8 +319,8 @@
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Batas Reseksi Proksimal</label>
-        <div class="col-sm-7">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Proksimal..." name="batas_reseksi_proksimal" value="<?php echo $batas_reseksi_proksimal; ?>" >cm
+        <div class="col-sm-7 straight">
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Batas Reseksi Proksimal..." name="batas_reseksi_proksimal" value="<?php echo $batas_reseksi_proksimal; ?>" >cm 
         </div>
       </div>
 
@@ -340,7 +333,7 @@
 
       <div class="form-group row">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Catatan Temuan Operasi</label>
-        <div class="col-sm-7">
+        <div class="col-sm-10">
           <input type="text" class="form-control" id="inputPassword3" placeholder="Catatan Temuan Operasi..." name="catatan_temuan_operasi" value="<?php echo $catatan_temuan_operasi; ?>" >
         </div>
       </div>
@@ -353,39 +346,4 @@
     </form>
   </div>
 </div>
-<script>
-    const mySelect = document.getElementById("textSelect");
-    const inputOther = document.getElementById("form12");
-    const labelInput = document.getElementById("inputLabel");
-    const divInput = document.getElementById("inputDiv");
-    const selectDiv = document.getElementById("textSelectdiv");
-
-    mySelect.addEventListener('optionSelect.mdb.select', function(e){
-    const SelectValue = document.getElementById('textSelect').value;
-    if (SelectValue === 'customOption') {
-    inputOther.style.display='inline';
-    inputOther.removeAttribute('disabled');
-    labelInput.classList.remove('disaplayInput');
-    divInput.classList.remove('disaplayInput');
-    selectDiv.style.display='none';
-    inputOther.focus();
-    mySelect.disabled = 'true';
-
-    } else {
-    a.style.display='none';
-    }
-    })
-
-    function hideInput(){
-    if (inputOther !== null && inputOther.value === "")
-    {
-    inputOther.style.display='none';
-    inputOther.setAttribute('disabled', '');
-    selectDiv.style.display='inline';
-    mySelect.removeAttribute('disabled');
-    labelInput.classList.add('disaplayInput');
-    divInput.classList.add('disaplayInput');
-    }
-    }
-</script>
 

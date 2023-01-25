@@ -359,3 +359,10 @@ button {
   }
 /* patologi start*/
 /*================*/
+
+/* style="display:flex; align-self: center; column-gap:2rem;"  */
+.form-group.row .col-sm-7{
+  display: flex;
+  align-self: center;
+  column-gap: 1rem;
+}

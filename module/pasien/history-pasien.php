@@ -253,7 +253,7 @@
  
                   ?>", 
                 >
-                  <i class="fa-regular fa-rectangle-list"><?php echo $id_patologi; echo $id_klinis; ?></i>
+                  <i class="fa-regular fa-rectangle-list"></i>
                 </a></td>
           </tr>
           <?php  
