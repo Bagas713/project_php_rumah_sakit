@@ -50,7 +50,7 @@
         <tbody>
           <?php
             $pagination = isset($_GET["pagination"]) ? $_GET["pagination"] : 1;
-            $data_perhalaman = 10;
+            $data_perhalaman = 7;
             $mulai_dari = ($pagination-1) * $data_perhalaman;
 
             $dataPagination = mysqli_query($conn, "SELECT * FROM data_pasien"); 
@@ -271,9 +271,31 @@
           $total_data = mysqli_num_rows($dataPagination);
           $total_halaman = ceil($total_data / $data_perhalaman);
 
-          for($i = 1; $i<=$total_halaman; $i++) {
+
+          $batasPosisiNomor = 3;
+          $batasJumlahHalaman = 5;
+          $mulaiPagination = 1;
+          $batasAkhhirPagination = $total_halaman;
+
+          if($pagination > 1) {
+            $prev = $pagination - 1;
+            echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$prev'><< Prev</a>";
+          }
+
+          $batasAkhhirPagination = ($mulaiPagination - 1) + $batasJumlahHalaman;
+
+          if($pagination > $batasPosisiNomor) {
+            $mulaiPagination = $pagination - ($batasPosisiNomor - 1);
+          }
+
+          for($i = $mulaiPagination; $i<=$batasAkhhirPagination; $i++) {
             
             echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$i'>$i</a>";
+          }
+
+          if($pagination < $total_halaman) {
+            $next = $pagination + 1;
+            echo "<a href='".BASE_URL."index.php?page=module/pasien/history-pasien&pagination=$next'>Next >></a>";
           }
         ?>
     </div>
