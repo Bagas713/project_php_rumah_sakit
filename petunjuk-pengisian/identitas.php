@@ -15,7 +15,7 @@
         <p>No RM</p>
       </div>
       <div class="isi">
-        <p>xxxxxxxxx</p>
+        <p>No Pasien</p>
       </div>
     </div>
     <div class="hint-box">
