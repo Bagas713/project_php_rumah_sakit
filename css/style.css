@@ -366,3 +366,21 @@ button {
   align-self: center;
   column-gap: 1rem;
 }
+
+/* patologi end */
+/* ===================================== */
+/* data report start */
+
+.container-export {
+  margin-left: 80px;
+  margin: 20px 30px;
+  padding-bottom: 40px;
+}
+
+.container-export .container-content-export {
+  overflow: hidden;
+
+}
+
+/* data report end */
+/* ===================================== */
