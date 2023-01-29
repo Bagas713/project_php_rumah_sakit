@@ -9,6 +9,7 @@
   $id_data_survival = isset($_GET['id_data_survival']) ? $_GET['id_data_survival'] : false;
 
   // mysqli_select_db($conn, "rumahsakit");
+
   $data = mysqli_query($conn, "SELECT * FROM data_pasien WHERE id_pasien = $id_pasien");
   while ($row = mysqli_fetch_array($data)) {
     $noRm = $row['no_rm'];
@@ -17,76 +18,72 @@
 
   $filename="data-$noRm-$namaLengkap-$type_ill-".date('Ymd').".csv";
 
-  //header info for browser
-  header("Content-Type:text/x-csv"); 
-    header('Content-Disposition: attachment; filename="' . $filename . '";');
-
     //menampilkan data sebagai array dari tabel produk
     $out=array();
 
   if($id_klinis && $id_patologi && $id_data_terapi && $id_data_survival) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 JOIN data_terapi ON data_pasien.id_pasien = data_terapi.dt_id_pasien
                                 JOIN data_survival ON data_pasien.id_pasien = data_survival.ds_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_klinis && $id_patologi && $id_data_terapi) {
     $sql = mysqli_query($conn,"SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 JOIN data_terapi ON data_pasien.id_pasien = data_terapi.dt_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_klinis && $id_data_terapi && $id_data_survival) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
                                 JOIN data_terapi ON data_pasien.id_pasien = data_terapi.dt_id_pasien
                                 JOIN data_survival ON data_pasien.id_pasien = data_survival.ds_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_klinis && $id_patologi && $id_data_survival) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 JOIN data_survival ON data_pasien.id_pasien = data_survival.ds_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_patologi && $id_data_terapi && $id_data_survival) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 JOIN data_terapi ON data_pasien.id_pasien = data_terapi.dt_id_pasien
                                 JOIN data_survival ON data_pasien.id_pasien = data_survival.ds_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_klinis && $id_patologi) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_klinis && $id_data_terapi) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
                                 JOIN data_terapi ON data_pasien.id_pasien = data_terapi.dt_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_klinis && $id_data_survival) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
                                 JOIN data_survival ON data_pasien.id_pasien = data_survival.ds_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_patologi && $id_data_terapi) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 JOIN data_terapi ON data_pasien.id_pasien = data_terapi.dt_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_patologi && $id_data_survival) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 JOIN data_survival ON data_pasien.id_pasien = data_survival.ds_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
@@ -98,12 +95,12 @@
   }
   else if($id_klinis) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN data_klinis_esofagus ON data_pasien.id_pasien = data_klinis_esofagus.dk_esofagus_id_pasien
+                                JOIN data_klinis_gaster ON data_pasien.id_pasien = data_klinis_gaster.dk_gaster_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_patologi) {
     $sql = mysqli_query($conn, "SELECT * FROM data_pasien
-                                JOIN patologi_esofagus ON data_pasien.id_pasien = patologi_esofagus.dp_esofagus_id_pasien
+                                JOIN patologi_gaster ON data_pasien.id_pasien = patologi_gaster.dp_gaster_id_pasien
                                 WHERE data_pasien.id_pasien = $id_pasien");
   }
   else if($id_data_terapi) {

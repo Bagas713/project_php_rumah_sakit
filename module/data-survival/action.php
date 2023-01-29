@@ -14,15 +14,64 @@
     $datas = mysqli_query($conn, "SELECT * FROM data_pasien WHERE id_pasien = '$id_pasien'");
     while($dta = mysqli_fetch_assoc($datas)) {
         $namaLengkap = $dta['nama_lengkap'];
-        $tanggal_lahir = $dta['date_born'];
     }
-    $tanggal_lahir = $tanggal_lahir;
+
+    if($type_ill == "Anus") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_anus WHERE dp_anus_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "Duodenum-Jejujum-Ileum") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_duodenum WHERE dp_duodenum_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "Kolon-Rektum") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_kolon WHERE dp_kolon_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "Esofagus") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_esofagus WHERE dp_esofagus_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "Gaster") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_gaster WHERE dp_gaster_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "GIST") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_gist WHERE dp_gist_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "Pankreas") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_pankreas WHERE dp_pankreas_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+    else if($type_ill == "Hepatobilier") {
+        $datasss = mysqli_query($conn, "SELECT tanggal_biopsi FROM patologi_hepatobilier WHERE dp_hepatobilier_id_pasien = '$id_pasien'");
+        while($dta = mysqli_fetch_assoc($datasss)) {
+            $tanggalBiopsi = $dta['tanggal_biopsi'];
+        }
+    }
+
+    $tanggalBiopsi = $tanggalBiopsi;
 
     if($button == "Save") {
         if($ds_status == "Meninggal"){
 
-            function hitung_umur($tanggal_lahir){
-                $birthDate = new DateTime($tanggal_lahir);
+            function hitung_umur($tanggalBiopsi){
+                $birthDate = new DateTime($tanggalBiopsi);
                 $tanggal_meninggal = new DateTime($tanggal_meninggal);
                 if ($birthDate > $tanggal_meninggal) { 
                     exit("0 tahun 0 bulan 0 hari");
@@ -32,17 +81,8 @@
                 $d = $tanggal_meninggal->diff($birthDate)->d;
                 return $y." tahun ".$m." bulan ".$d." hari";
             }
-
-            
-
-            function getAge($tanggal_meninggal) {
-                $tanggal_meninggall = new DateTime($tanggal_meninggal);
-                $tanggal_masa = new DateTime($tanggal_lahir);
-                $diff = $tanggal_meninggall->diff($tanggal_masa);
-                return $diff->d;
-            }
         
-            $masa_hidup = hitung_umur($tanggal_lahir);
+            $masa_hidup = hitung_umur($tanggalBiopsi);
         } else {
             $masa_hidup = "Hidup";
         }
@@ -106,8 +146,8 @@
         }
     } else if($button == "Update") {
         if($ds_status == "Meninggal"){
-            function hitung_umur($tanggal_lahir){
-                $birthDate = new DateTime($tanggal_lahir);
+            function hitung_umur($tanggalBiopsi){
+                $birthDate = new DateTime($tanggalBiopsi);
                 $tanggal_meninggal = new DateTime($tanggal_meninggal);
                 if ($birthDate > $tanggal_meninggal) { 
                     exit("0 tahun 0 bulan 0 hari");
@@ -117,17 +157,8 @@
                 $d = $tanggal_meninggal->diff($birthDate)->d;
                 return $y." tahun ".$m." bulan ".$d." hari";
             }
-
-            
-
-            function getAge($tanggal_meninggal) {
-                $tanggal_meninggall = new DateTime($tanggal_meninggal);
-                $tanggal_masa = new DateTime($tanggal_lahir);
-                $diff = $tanggal_meninggall->diff($tanggal_masa);
-                return $diff->d;
-            }
         
-            $masa_hidup = hitung_umur($tanggal_lahir);
+            $masa_hidup = hitung_umur($tanggalBiopsi);
         } else {
             $masa_hidup = "Hidup";
         }               

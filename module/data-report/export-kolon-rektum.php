@@ -84,19 +84,19 @@
               <div class="card-body">
                 <?php
 
-                  $data = mysqli_query($conn, "SELECT * FROM data_klinis_esofagus where id_klinis_esofagus = '$id_klinis'");
+                  $data = mysqli_query($conn, "SELECT * FROM data_klinis_kolon where id_klinis_kolon = '$id_klinis'");
                   while($dta = mysqli_fetch_array($data)) {
                     $keluhan = $dta['keluhan'];
                     $period = $dta['period'];
                     $famHistory = $dta['fam_history'];
                     $lokasi = $dta['lokasi'];
-                    $esofagografi = $dta['esofagografi'];
-                    $endoskopi = $dta['endoskopi'];
+                    $infectionHistory = $dta['infection_history'];
+                    $kolonoskopi = $dta['kolonoskopi'];
                     $ctScan = $dta['ct_scan'];
                   }
 
-                  $title = ['Keluhan', 'Periode', 'Riwayat Keluarga', 'Lokasi', 'Esofagografi', 'Endoskopi', 'CT Scan'];
-                  $data = [$keluhan, $period, $famHistory, $lokasi, $esofagografi, $endoskopi, $ctScan];
+                  $title = ['Keluhan', 'Periode', 'Riwayat Keluarga', 'Lokasi', 'Riwayat Infeksi HPV', 'Kolonoskopi', 'CT Scan'];
+                  $data = [$keluhan, $period, $famHistory, $lokasi, $infectionHistory, $kolonoskopi, $ctScan];
                   
                   for($i=0; $i<count($title); $i++) {
                     echo "
@@ -135,7 +135,7 @@
               <div class="card-body">
                 <?php
 
-                  $data = mysqli_query($conn, "SELECT * FROM patologi_esofagus where id_patologi_esofagus = '$id_patologi'");
+                  $data = mysqli_query($conn, "SELECT * FROM patologi_kolon where id_patologi_kolon = '$id_patologi'");
                   while($dta = mysqli_fetch_array($data)) {
                     $tumor = $dta['tumor'];
                     $node = $dta['node'];

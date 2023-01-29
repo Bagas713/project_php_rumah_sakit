@@ -84,19 +84,18 @@
               <div class="card-body">
                 <?php
 
-                  $data = mysqli_query($conn, "SELECT * FROM data_klinis_esofagus where id_klinis_esofagus = '$id_klinis'");
+                  $data = mysqli_query($conn, "SELECT * FROM data_klinis_gist where id_klinis_gist = '$id_klinis'");
                   while($dta = mysqli_fetch_array($data)) {
                     $keluhan = $dta['keluhan'];
                     $period = $dta['period'];
                     $famHistory = $dta['fam_history'];
                     $lokasi = $dta['lokasi'];
-                    $esofagografi = $dta['esofagografi'];
-                    $endoskopi = $dta['endoskopi'];
+                    $mrcp = $dta['mrcp'];
                     $ctScan = $dta['ct_scan'];
                   }
 
-                  $title = ['Keluhan', 'Periode', 'Riwayat Keluarga', 'Lokasi', 'Esofagografi', 'Endoskopi', 'CT Scan'];
-                  $data = [$keluhan, $period, $famHistory, $lokasi, $esofagografi, $endoskopi, $ctScan];
+                  $title = ['Keluhan', 'Periode', 'Riwayat Keluarga', 'Lokasi', 'MRCP', 'CT Scan'];
+                  $data = [$keluhan, $period, $famHistory, $lokasi, $mrcp, $ctScan];
                   
                   for($i=0; $i<count($title); $i++) {
                     echo "
@@ -135,7 +134,7 @@
               <div class="card-body">
                 <?php
 
-                  $data = mysqli_query($conn, "SELECT * FROM patologi_esofagus where id_patologi_esofagus = '$id_patologi'");
+                  $data = mysqli_query($conn, "SELECT * FROM patologi_gist where id_patologi_gist = '$id_patologi'");
                   while($dta = mysqli_fetch_array($data)) {
                     $tumor = $dta['tumor'];
                     $node = $dta['node'];
@@ -148,15 +147,14 @@
                     $reseksi = $dta['reseksi'];
                     $batasReseksiProksimal = $dta['batas_reseksi_proksimal'];
                     $batasReseksiDistal = $dta['batas_reseksi_distal'];
-                    $lvi = $dta['lvi'];
-                    $invasiPerineural = $dta['invasi_perineural'];
+                    $indexMitotis = $dta['index_mitotis'];
                     $catatanTemuanOperasi = $dta['catatan_temuan_operasi'];
                     $noPatologiOperasiDefinitif = $dta['no_patologi_operasi_definitif'];
                     $jenisPatologiOperasiDefinitif = $dta['jenis_patologi_operasi_definitif'];
                   }
 
-                  $title = ['Tumor', 'Node', 'Metastasis', 'Lokasi Metastasis', 'No Patologi Biopsi', 'Tanggal Biopsi', 'Jenis Patologi Biopsi', 'Grade Histopatologi', 'Reseksi', 'Batas Reseksi Proksimal', 'Batas Reseksi Distal', 'LVI', 'Invasi Perineural', 'Catatan Temuan Operasi', 'No Patologi Operasi Definitif', 'Jenis Patologi Operasi Definitif'];
-                  $data = [$tumor, $node, $metastasis, $lokasiMetastatis, $noPatologiBiopsi, $tanggalBiopsi, $jenisPatologiBiopsi, $gradeHistopatologi, $reseksi, $batasReseksiProksimal, $batasReseksiDistal, $lvi, $invasiPerineural, $catatanTemuanOperasi, $noPatologiOperasiDefinitif, $jenisPatologiOperasiDefinitif];
+                  $title = ['Tumor', 'Node', 'Metastasis', 'Lokasi Metastasis', 'No Patologi Biopsi', 'Tanggal Biopsi', 'Jenis Patologi Biopsi', 'Grade Histopatologi', 'Reseksi', 'Batas Reseksi Proksimal', 'Batas Reseksi Distal', 'Index Mitotis', 'Catatan Temuan Operasi', 'No Patologi Operasi Definitif', 'Jenis Patologi Operasi Definitif'];
+                  $data = [$tumor, $node, $metastasis, $lokasiMetastatis, $noPatologiBiopsi, $tanggalBiopsi, $jenisPatologiBiopsi, $gradeHistopatologi, $reseksi, $batasReseksiProksimal, $batasReseksiDistal, $indexMitotis, $catatanTemuanOperasi, $noPatologiOperasiDefinitif, $jenisPatologiOperasiDefinitif];
                   
                   for($i=0; $i<count($title); $i++) {
                     echo "
